@@ -1,0 +1,6 @@
+{
+  "name": "DEON ENTERPRISE - Beyond Service",
+  "description": "Full-service Design & Printing Company based at Zebra House Level 1, Nasser Road, Kampala. Large format printing, 3D illuminated signs, school branding, shop branding & promotional materials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,2075 @@
+<!-- TO DEPLOY WITH FIREBASE HOSTING: 1) npm install -g firebase-tools 2) firebase login 3) firebase init hosting (public directory: . , single-page: No) 4) firebase deploy -> you get https://deon-enterprise.web.app -->
+<!-- TO DEPLOY WITH NETLIFY: Go to app.netlify.com/drop and drag this folder -->
+<!-- TO SETUP FIREBASE: Go to console.firebase.google.com > Create Project deon-enterprise > Firestore Database > Create in Test Mode > Project Settings > Web App > Copy config and paste above -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEON ENTERPRISE - Beyond Service | Design & Printing Kampala</title>
+  <meta name="description" content="DEON ENTERPRISE is a premier Design & Printing company based at Zebra House Level 1, Nasser Road, Kampala. Large format printing, 3D letters, school branding, shop branding, t-shirts and signs." />
+  <meta property="og:title" content="DEON ENTERPRISE - Beyond Service" />
+  <meta property="og:description" content="We Design. We Print. We Brand Uganda. Nasser Road, Kampala." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/jpeg" href="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" />
+
+  <!-- Google Fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#0a1f6a',
+            brandRed: '#e31e24',
+            brandYellow: '#ffc400',
+            brandDark: '#0f0f0f',
+            brandGray: '#1a1f2c'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1f2937;
+      background-color: #f8fafc;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0a1f6a 0%, #061342 60%, #0f0f0f 100%);
+    }
+    .motto-glow {
+      box-shadow: 0 0 35px rgba(255, 196, 0, 0.25);
+    }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -10px rgba(10, 31, 106, 0.15);
+    }
+    @keyframes pulseSlow {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    .animate-pulse-slow {
+      animation: pulseSlow 3s infinite ease-in-out;
+    }
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brandYellow selection:text-brandDark">
+
+  <!-- ==================== 1. STICKY NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-[#0a1f6a]/95 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3.5 group">
+          <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-brandYellow shadow-lg shadow-black/40 group-hover:scale-105 transition-transform bg-white shrink-0 p-0.5">
+            <img src="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" alt="DEON ENTERPRISE Logo" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='logo.jpg';" />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-xl sm:text-2xl tracking-wider text-white flex items-center gap-1.5 leading-none">
+              DEON <span class="text-brandYellow">ENTERPRISE</span>
+            </span>
+            <span class="text-[10px] tracking-[0.25em] text-red-300 font-semibold uppercase mt-1">
+              Beyond Service
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+          <a href="#home" class="text-white hover:text-brandYellow transition-colors">Home</a>
+          <a href="#about" class="text-white/80 hover:text-brandYellow transition-colors">About Us</a>
+          <a href="#services" class="text-white/80 hover:text-brandYellow transition-colors">Services</a>
+          <a href="#portfolio" class="text-white/80 hover:text-brandYellow transition-colors">Our Work</a>
+          <a href="#system-flow" class="text-white/80 hover:text-brandYellow transition-colors">System Flow</a>
+          <a href="#calculator" class="text-white/80 hover:text-brandYellow transition-colors">Calculator</a>
+          <a href="#order" class="text-white/80 hover:text-brandYellow transition-colors">Order</a>
+          <a href="#admin" class="text-white/80 hover:text-brandYellow transition-colors flex items-center gap-1">
+            <svg class="w-4 h-4 text-brandYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            Admin
+          </a>
+        </nav>
+
+        <!-- CTA Button -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20would%20like%20to%20get%20a%20free%20quote" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="px-5 py-2.5 rounded-full bg-brandYellow hover:bg-yellow-400 text-brandDark font-display font-bold text-sm flex items-center gap-2 shadow-lg shadow-yellow-500/30 hover:scale-105 active:scale-95 transition-all">
+            <svg class="w-4 h-4 fill-current text-brandDark" viewBox="0 0 24 24">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.33C9.35 7.33 9.07 7.4 8.84 7.64C8.61 7.89 7.97 8.49 7.97 9.71C7.97 10.93 8.86 12.11 9 12.27C9.14 12.43 10.79 14.97 13.3 16.06C13.9 16.32 14.36 16.47 14.72 16.59C15.32 16.78 15.87 16.75 16.3 16.69C16.78 16.62 17.78 16.08 17.99 15.48C18.2 14.88 18.2 14.37 18.14 14.27C18.08 14.17 17.9 14.11 17.63 13.97C17.36 13.84 16.04 13.19 15.8 13.1C15.56 13.01 15.38 12.97 15.2 13.24C15.02 13.51 14.51 14.11 14.35 14.29C14.19 14.47 14.04 14.5 13.77 14.37C13.5 14.24 12.63 13.95 11.6 13.03C10.8 12.31 10.26 11.43 10.12 11.16C9.97 10.89 10.1 10.74 10.24 10.61C10.36 10.49 10.51 10.3 10.64 10.14C10.77 10 10.82 9.89 10.91 9.71C11 9.53 10.95 9.38 10.89 9.24C10.83 9.11 10.3 7.81 10.08 7.28C9.86 6.76 9.64 6.84 9.48 6.83L9.04 6.83C8.86 6.83 8.57 6.9 8.35 7.14C8.13 7.38 7.5 7.97 7.5 9.2Z"/>
+            </svg>
+            Get Quote
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle menu" class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#061342] border-b border-white/10 px-4 pt-3 pb-6 space-y-3">
+      <div class="flex items-center gap-3 pb-2 border-b border-white/10 mb-2">
+        <div class="w-9 h-9 rounded-full overflow-hidden border border-brandYellow bg-white p-0.5 shrink-0">
+          <img src="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" alt="DEON Logo" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='logo.jpg';" />
+        </div>
+        <div class="text-xs">
+          <div class="font-display font-bold text-white">DEON ENTERPRISE</div>
+          <div class="text-brandYellow text-[10px]">Beyond Service</div>
+        </div>
+      </div>
+      <a href="#home" class="mobile-link block py-2 text-white font-medium hover:text-brandYellow">Home</a>
+      <a href="#about" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">About Us</a>
+      <a href="#services" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Services</a>
+      <a href="#portfolio" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Our Work</a>
+      <a href="#system-flow" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">System Flow</a>
+      <a href="#calculator" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Price Calculator</a>
+      <a href="#order" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Place Order</a>
+      <a href="#admin" class="mobile-link block py-2 text-white/80 hover:text-brandYellow flex items-center gap-2">
+        <svg class="w-4 h-4 text-brandYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+        Admin Portal
+      </a>
+      <div class="pt-2">
+        <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20would%20like%20to%20get%20a%20free%20quote" 
+           target="_blank" 
+           class="w-full py-3 rounded-xl bg-brandYellow text-brandDark font-display font-bold text-center block shadow-lg">
+          Get Quote on WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION ==================== -->
+  <section id="home" class="relative hero-gradient text-white pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
+    <!-- Background Accents -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brandRed/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-80 h-80 bg-brandYellow/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Pill Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-medium mb-6 text-yellow-300">
+        <img src="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" alt="DEON Logo" class="w-5 h-5 rounded-full object-cover border border-brandYellow shrink-0" onerror="this.onerror=null; this.src='logo.jpg';" />
+        <span>Uganda's Leading Design & Printing Hub • Nasser Road</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-black leading-tight sm:leading-tight">
+            We Design. <br/>
+            We Print. <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandYellow via-yellow-300 to-white">
+              We Brand Uganda.
+            </span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-200 max-w-2xl font-normal leading-relaxed">
+            From Banners, Signage, 3D Letters, T-Shirts, Business Cards to Full Shop Branding - Fast, Quality, Affordable.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#order" class="px-8 py-4 rounded-xl bg-brandRed hover:bg-red-600 text-white font-display font-bold text-base sm:text-lg shadow-xl shadow-red-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+              <span>Place Order Now</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+
+            <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20would%20like%20to%20order%20printing%20services" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="px-7 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-display font-bold text-base sm:text-lg shadow-xl shadow-emerald-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+              <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.33C9.35 7.33 9.07 7.4 8.84 7.64C8.61 7.89 7.97 8.49 7.97 9.71C7.97 10.93 8.86 12.11 9 12.27C9.14 12.43 10.79 14.97 13.3 16.06C13.9 16.32 14.36 16.47 14.72 16.59C15.32 16.78 15.87 16.75 16.3 16.69C16.78 16.62 17.78 16.08 17.99 15.48C18.2 14.88 18.2 14.37 18.14 14.27C18.08 14.17 17.9 14.11 17.63 13.97C17.36 13.84 16.04 13.19 15.8 13.1C15.56 13.01 15.38 12.97 15.2 13.24C15.02 13.51 14.51 14.11 14.35 14.29C14.19 14.47 14.04 14.5 13.77 14.37C13.5 14.24 12.63 13.95 11.6 13.03C10.8 12.31 10.26 11.43 10.12 11.16C9.97 10.89 10.1 10.74 10.24 10.61C10.36 10.49 10.51 10.3 10.64 10.14C10.77 10 10.82 9.89 10.91 9.71C11 9.53 10.95 9.38 10.89 9.24C10.83 9.11 10.3 7.81 10.08 7.28C9.86 6.76 9.64 6.84 9.48 6.83L9.04 6.83C8.86 6.83 8.57 6.9 8.35 7.14C8.13 7.38 7.5 7.97 7.5 9.2Z"/>
+              </svg>
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+
+          <!-- Quick Contact Bar -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 text-xs sm:text-sm text-slate-300">
+            <div class="flex items-center gap-2.5 bg-white/5 p-2.5 rounded-lg border border-white/10">
+              <span class="text-brandYellow text-lg">📍</span>
+              <span><strong>Location:</strong> Zebra House Level 1, Nasser Road, Kampala</span>
+            </div>
+            <div class="flex items-center gap-2.5 bg-white/5 p-2.5 rounded-lg border border-white/10">
+              <span class="text-emerald-400 text-lg">📞</span>
+              <span><strong>Phone / WhatsApp:</strong> +256 701099816</span>
+            </div>
+            <div class="flex items-center gap-2.5 bg-white/5 p-2.5 rounded-lg border border-white/10">
+              <span class="text-blue-400 text-lg">✉️</span>
+              <span><strong>Email:</strong> deonlinus7@gmail.com</span>
+            </div>
+            <div class="flex items-center gap-2.5 bg-white/5 p-2.5 rounded-lg border border-white/10">
+              <span class="text-pink-400 text-lg">📷</span>
+              <span><strong>Instagram:</strong> @DeonEnterprise</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Media: img2.jpg showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md rounded-2xl p-2 bg-gradient-to-tr from-brandYellow/40 via-white/20 to-brandRed/40 shadow-2xl backdrop-blur-md">
+            <div class="relative overflow-hidden rounded-xl bg-slate-900 aspect-[4/5] group border border-white/15">
+              <img src="/assets/images/deon_flyer_showcase_1793960828642.jpg" 
+                   alt="DEON Enterprise Flyer Showcase - Hands of Grace School 2026" 
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   id="heroImage"
+                   referrerPolicy="no-referrer"
+                   onerror="this.onerror=null; this.src='img2.jpg';" />
+
+              <!-- Overlay badge -->
+              <div class="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-white/10 text-white">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded bg-brandRed text-[11px] font-bold uppercase tracking-wider">Featured Print</span>
+                  <span class="text-brandYellow font-semibold text-xs">Hands of Grace 2026</span>
+                </div>
+                <h4 class="font-display font-bold text-sm mt-1">Official School Admission Flyer Design</h4>
+                <p class="text-[12px] text-slate-300">Printed on 150gsm Gloss Art Paper • Fast Dispatch</p>
+              </div>
+
+              <!-- Top floating badge -->
+              <div class="absolute top-4 right-4 bg-brandYellow text-brandDark px-3 py-1 rounded-full text-xs font-black shadow-lg">
+                DEON FLYER
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative floating review badge -->
+          <div class="absolute -bottom-5 -left-4 bg-white text-slate-900 p-3 sm:p-4 rounded-xl shadow-xl flex items-center gap-3 border border-slate-100 hidden sm:flex">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-black text-lg">
+              ✓
+            </div>
+            <div>
+              <div class="font-display font-bold text-xs">Uganda Quality Assured</div>
+              <div class="text-[11px] text-slate-500">100% Guaranteed High-Res Print</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Badges Row -->
+      <div class="mt-14 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 flex items-center justify-center gap-4">
+          <div class="text-3xl">🏆</div>
+          <div class="text-left">
+            <div class="font-display font-black text-xl text-brandYellow">500+ Happy Clients</div>
+            <div class="text-xs text-slate-300">Schools, Salons, Shops, Churches across Uganda</div>
+          </div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 flex items-center justify-center gap-4">
+          <div class="text-3xl">⚡</div>
+          <div class="text-left">
+            <div class="font-display font-black text-xl text-brandYellow">24-72hr Delivery</div>
+            <div class="text-xs text-slate-300">Rapid production & installation in Kampala & Upcountry</div>
+          </div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 flex items-center justify-center gap-4">
+          <div class="text-3xl">🛡️</div>
+          <div class="text-left">
+            <div class="font-display font-black text-xl text-brandYellow">100% Quality Guarantee</div>
+            <div class="text-xs text-slate-300">Vibrant non-fade ink, precision laser cut & durable materials</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. ABOUT US SECTION ==================== -->
+  <section id="about" class="py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block px-4 py-1 rounded-full bg-brandNavy/10 text-brandNavy font-semibold text-xs tracking-wider uppercase mb-3">
+          Our Story & Identity
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-brandNavy">
+          About DEON ENTERPRISE
+        </h2>
+        <div class="w-20 h-1.5 bg-brandRed mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 3A. WHO WE ARE -->
+      <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-100 mb-16 card-hover">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-brandNavy text-brandYellow flex items-center justify-center font-bold text-lg">
+                3A
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-display font-bold text-brandNavy">Who We Are</h3>
+            </div>
+            <div class="space-y-5 text-slate-700 text-base sm:text-lg leading-relaxed">
+              <p>
+                <strong>DEON Enterprise</strong> is a full-service Design & Printing Company based at Zebra House Level 1, Nasser Road, Kampala. We help businesses, schools, churches, salons, and organisations look professional and attract more customers. We have branded real clients like <span class="font-semibold text-brandNavy underline decoration-brandYellow decoration-2">NeiGlow Skin Care</span>, <span class="font-semibold text-brandNavy underline decoration-brandYellow decoration-2">Beauty by Gisel</span>, <span class="font-semibold text-brandNavy underline decoration-brandYellow decoration-2">UMOJA Unisex Salon</span>, <span class="font-semibold text-brandNavy underline decoration-brandYellow decoration-2">Bishop Willigers Memorial School - Iganga</span>, <span class="font-semibold text-brandNavy underline decoration-brandYellow decoration-2">Hands of Grace Nursery & Primary School - Mukono</span>.
+              </p>
+              <p>
+                From a simple flyer to a full 3D illuminated signage, we deliver quality that speaks. Our Promise: <strong>Quality Work, On Time, Fair Price, Beyond Service.</strong>
+              </p>
+            </div>
+          </div>
+          
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group aspect-[4/3] bg-slate-900">
+              <img src="/assets/images/printing_press_workshop_1793960828694.jpg" 
+                   alt="DEON Enterprise Printing Production Hub - Nasser Road Kampala" 
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   referrerPolicy="no-referrer"
+                   onerror="this.onerror=null; this.src='src/assets/images/printing_press_workshop_1793960828694.jpg';" />
+              <div class="absolute bottom-3 left-3 right-3 bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl text-white text-xs flex items-center justify-between border border-white/10">
+                <span class="font-semibold text-slate-200">📍 Zebra House Level 1, Nasser Rd</span>
+                <span class="text-brandYellow font-bold">Industrial Press</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promise Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-100">
+          <div class="p-3 rounded-xl bg-slate-50 text-center border border-slate-200">
+            <span class="block text-brandRed font-display font-black text-lg">Quality Work</span>
+            <span class="text-xs text-slate-500">Premium materials only</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 text-center border border-slate-200">
+            <span class="block text-brandNavy font-display font-black text-lg">On Time</span>
+            <span class="text-xs text-slate-500">24-72h turnaround</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 text-center border border-slate-200">
+            <span class="block text-emerald-600 font-display font-black text-lg">Fair Price</span>
+            <span class="text-xs text-slate-500">Direct factory rates</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 text-center border border-slate-200">
+            <span class="block text-amber-500 font-display font-black text-lg">Beyond Service</span>
+            <span class="text-xs text-slate-500">Long-term partner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3B & 3C. MISSION & VISION -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        
+        <!-- 3B. OUR MISSION -->
+        <div class="bg-gradient-to-br from-[#0a1f6a] to-[#0f2d8a] text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden card-hover">
+          <div class="w-12 h-12 rounded-2xl bg-brandRed flex items-center justify-center text-2xl font-bold mb-6 shadow-lg shadow-brandRed/50">
+            🎯
+          </div>
+          <span class="text-xs uppercase font-bold tracking-widest text-brandYellow">Section 3B</span>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold mt-1 mb-4">Our Mission</h3>
+          <p class="text-slate-100 text-base sm:text-lg leading-relaxed">
+            To provide high-quality, affordable and creative design, printing and branding solutions that help Ugandan businesses grow, stand out and attract more customers - delivered on time, every time.
+          </p>
+        </div>
+
+        <!-- 3C. OUR VISION -->
+        <div class="bg-gradient-to-br from-[#0f0f0f] to-[#1e293b] text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden card-hover">
+          <div class="w-12 h-12 rounded-2xl bg-brandYellow text-brandDark flex items-center justify-center text-2xl font-bold mb-6 shadow-lg shadow-yellow-500/50">
+            🔭
+          </div>
+          <span class="text-xs uppercase font-bold tracking-widest text-brandYellow">Section 3C</span>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold mt-1 mb-4">Our Vision</h3>
+          <p class="text-slate-100 text-base sm:text-lg leading-relaxed">
+            To become Uganda's most trusted and leading Design & Printing brand - known across East Africa for excellence, innovation and Beyond Service customer experience.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 3D & 3E. OBJECTIVES & GOALS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        
+        <!-- 3D. OBJECTIVES -->
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 card-hover">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-brandRed/10 text-brandRed flex items-center justify-center font-bold">
+              3D
+            </div>
+            <h3 class="text-2xl font-display font-bold text-brandNavy">Our Objectives</h3>
+          </div>
+          <ul class="space-y-4 text-slate-700">
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>Deliver 100% quality prints</strong> - no fading, no mistakes</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>Deliver all orders within 24hrs - 72hrs</strong> without excuses</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>Give fair prices</strong> for small businesses, schools and churches</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>Use modern machines</strong> and durable weather-resistant materials</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>Provide free design advice</strong>, free quote and free samples</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>Build long-term relationships</strong>, not one-time sales</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3E. GOALS -->
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 card-hover">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-brandYellow/20 text-brandDark flex items-center justify-center font-bold">
+              3E
+            </div>
+            <h3 class="text-2xl font-display font-bold text-brandNavy">Our Goals</h3>
+          </div>
+          <ul class="space-y-4 text-slate-700">
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-brandNavy flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+              <span><strong>Serve 1,000+ businesses</strong> in Kampala by 2027</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-brandNavy flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+              <span><strong>Open 2 more branches</strong> across Uganda</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-brandNavy flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+              <span><strong>Launch online ordering</strong> and delivery countrywide</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-brandNavy flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+              <span><strong>Train 50+ youth</strong> in printing, graphics design and branding</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-brandNavy flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</span>
+              <span><strong>Become #1 on Google</strong> for "Printing in Kampala"</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-brandNavy flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">6</span>
+              <span><strong>Grow Instagram @DeonEnterprise</strong> to 20k active followers</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 3F. OUR PHRASE / MOTTO -->
+      <div class="mb-16">
+        <div class="relative bg-gradient-to-r from-brandNavy via-[#0f2d8a] to-brandNavy rounded-3xl p-8 sm:p-12 text-center text-white motto-glow border-2 border-brandYellow overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-brandYellow/15 rounded-full blur-xl"></div>
+          <span class="inline-block px-4 py-1 rounded-full bg-brandRed text-white text-xs font-black tracking-widest uppercase mb-4">
+            3F. Our Official Motto
+          </span>
+          <blockquote class="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-brandYellow leading-snug max-w-4xl mx-auto">
+            “BEYOND SERVICE - We don't just print, we make your brand unforgettable.”
+          </blockquote>
+          <p class="text-slate-300 text-sm mt-4 font-medium">DEON ENTERPRISE • NATIONWIDE BRANDING EXCELLENCE</p>
+        </div>
+      </div>
+
+      <!-- 3G. TARGET AUDIENCE -->
+      <div>
+        <div class="text-center mb-8">
+          <span class="inline-block px-4 py-1 rounded-full bg-brandNavy/10 text-brandNavy font-semibold text-xs tracking-wider uppercase mb-2">
+            3G. Who We Serve
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-brandNavy">Our Target Audience</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 card-hover">
+            <div class="text-3xl mb-3">🏪</div>
+            <h4 class="font-display font-bold text-lg text-brandNavy">1) Small Businesses & Shops</h4>
+            <p class="text-sm text-slate-600 mt-1">Retail stores, boutiques, supermarkets, hardware, and kiosks in Kampala seeking high visibility.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 card-hover">
+            <div class="text-3xl mb-3">🎓</div>
+            <h4 class="font-display font-bold text-lg text-brandNavy">2) Schools & Universities</h4>
+            <p class="text-sm text-slate-600 mt-1">Schools in Iganga, Mukono, Kampala: Admission flyers, illuminated signs, certificates, branded uniforms.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 card-hover">
+            <div class="text-3xl mb-3">⛪</div>
+            <h4 class="font-display font-bold text-lg text-brandNavy">3) Churches & NGOs</h4>
+            <p class="text-sm text-slate-600 mt-1">Conference banners, event backdrops, lanyards, programs, donation boxes, and outreach branding.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 card-hover">
+            <div class="text-3xl mb-3">💇‍♀️</div>
+            <h4 class="font-display font-bold text-lg text-brandNavy">4) Salons & Beauty Shops</h4>
+            <p class="text-sm text-slate-600 mt-1">Proven results for UMOJA Unisex Salon, NeiGlow Skin Care, Beauty by Gisel - 3D Lightboxes & glass branding.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 card-hover">
+            <div class="text-3xl mb-3">🍽️</div>
+            <h4 class="font-display font-bold text-lg text-brandNavy">5) Restaurants & Hotels</h4>
+            <p class="text-sm text-slate-600 mt-1">Outdoor lightboxes, acrylic menu boards, staff aprons, window vinyl graphics, and table tents.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 card-hover">
+            <div class="text-3xl mb-3">🎪</div>
+            <h4 class="font-display font-bold text-lg text-brandNavy">6) Politicians, Events & Weddings</h4>
+            <p class="text-sm text-slate-600 mt-1">Campaign posters, roll-up banners, wedding photo backdrops, invitation cards, and custom souvenirs.</p>
+          </div>
+
+        </div>
+
+        <!-- Target callout -->
+        <div class="mt-8 text-center bg-brandYellow/20 border border-brandYellow/40 rounded-2xl p-5">
+          <p class="font-display font-black text-xl text-brandNavy">
+            📢 “If you need to be seen, you need DEON.”
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. SERVICES SECTION ==================== -->
+  <section id="services" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block px-4 py-1 rounded-full bg-brandRed/10 text-brandRed font-semibold text-xs tracking-wider uppercase mb-3">
+          What We Do Best
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-brandNavy">
+          Our Core Printing Services
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg mt-3">
+          Top-tier printing with crisp resolution, guaranteed durability, and the quickest delivery in Kampala.
+        </p>
+        <div class="w-20 h-1.5 bg-brandYellow mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 3 Service Cards with Prices -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Service 1: Large Format -->
+        <div class="rounded-3xl border border-slate-200 bg-white shadow-xl overflow-hidden flex flex-col justify-between card-hover group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-slate-900">
+              <img src="/assets/images/large_format_banner_1793960826713.jpg" 
+                   alt="Large Format Printing - Pull up banners, teardrop flags, backdrops" 
+                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   referrerPolicy="no-referrer"
+                   onerror="this.onerror=null; this.src='src/assets/images/large_format_banner_1793960826713.jpg';" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brandNavy/95 via-brandNavy/40 to-transparent"></div>
+              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-brandYellow text-brandDark text-[11px] font-black uppercase tracking-wider">Outdoor & Indoor</span>
+                <span class="text-xs font-bold text-brandYellow">UV Inks</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl sm:text-2xl font-display font-black text-brandNavy">LARGE FORMAT PRINTING</h3>
+              <div class="mt-1 mb-4 text-2xl font-display font-extrabold text-brandRed">
+                From 50,000 <span class="text-sm text-slate-500 font-normal">UGX</span>
+              </div>
+              <p class="text-sm text-slate-600 mb-4 font-medium">
+                High-impact visual displays engineered to withstand tropical sunshine and heavy rain:
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Pull Up Banners (Luxury Base)</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Teardrop & Telescopic Banners</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Event Backdrops & Red Carpets</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Full & Partial Car Branding</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Stickers & Window Frosted Graphics</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Wall Posters & Billboards & More</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20want%20to%20order%20Large%20Format%20Printing%20(From%2050,000%20UGX)" 
+               target="_blank" 
+               class="w-full py-3.5 rounded-xl bg-brandNavy hover:bg-navy-900 text-white font-display font-bold text-center block shadow-lg hover:shadow-xl transition-all">
+              Order This Service →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Digital Printing -->
+        <div class="rounded-3xl border-2 border-brandRed bg-white shadow-2xl overflow-hidden flex flex-col justify-between card-hover relative group">
+          <div class="absolute top-3 right-3 z-10 bg-brandRed text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-lg">
+            Popular Choice
+          </div>
+          <div>
+            <div class="relative h-48 overflow-hidden bg-slate-900">
+              <img src="/assets/images/digital_print_stationery_1793960826879.jpg" 
+                   alt="Digital Printing - Business cards, certificates, brochures, flyers" 
+                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   referrerPolicy="no-referrer"
+                   onerror="this.onerror=null; this.src='src/assets/images/digital_print_stationery_1793960826879.jpg';" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brandRed/95 via-brandRed/40 to-transparent"></div>
+              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-white text-brandRed text-[11px] font-black uppercase tracking-wider">Corporate & Schools</span>
+                <span class="text-xs font-bold text-yellow-200">Laser Precision</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl sm:text-2xl font-display font-black text-brandNavy">DIGITAL PRINTING</h3>
+              <div class="mt-1 mb-4 text-2xl font-display font-extrabold text-brandRed">
+                From 5,000 <span class="text-sm text-slate-500 font-normal">UGX</span>
+              </div>
+              <p class="text-sm text-slate-600 mb-4 font-medium">
+                Sharp, vibrant stationery and marketing collateral printed with laser-sharp resolution:
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Brochures & Tri-folds</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Premium Business Cards (Matte/Gloss)</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Academic & Corporate Certificates</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Desk & Wall Calendars</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Books, Notebooks, Magazines, Folders</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Agendas, Branded Pens, Envelopes</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> School Admission Flyers & Receipt Books</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20want%20to%20order%20Digital%20Printing%20(From%205,000%20UGX)" 
+               target="_blank" 
+               class="w-full py-3.5 rounded-xl bg-brandRed hover:bg-red-700 text-white font-display font-bold text-center block shadow-lg hover:shadow-xl transition-all">
+              Order This Service →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Material Branding -->
+        <div class="rounded-3xl border border-slate-200 bg-white shadow-xl overflow-hidden flex flex-col justify-between card-hover group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-slate-900">
+              <img src="/assets/images/merchandise_branding_1793960826550.jpg" 
+                   alt="Material Branding - T-shirts, caps, mugs, bags, lanyards" 
+                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   referrerPolicy="no-referrer"
+                   onerror="this.onerror=null; this.src='src/assets/images/merchandise_branding_1793960826550.jpg';" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brandDark/95 via-brandDark/40 to-transparent"></div>
+              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-brandYellow text-brandDark text-[11px] font-black uppercase tracking-wider">Merchandise & Signs</span>
+                <span class="text-xs font-bold text-brandYellow">Embroidery & Print</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl sm:text-2xl font-display font-black text-brandNavy">MATERIAL BRANDING</h3>
+              <div class="mt-1 mb-4 text-2xl font-display font-extrabold text-brandRed">
+                From 15,000 <span class="text-sm text-slate-500 font-normal">UGX</span>
+              </div>
+              <p class="text-sm text-slate-600 mb-4 font-medium">
+                End-to-end merchandise fabrication and custom 3D architectural signage:
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Branded Bags, Tote Bags & Paper Bags</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Key Holders, Metal & Plastic Nametags</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Shirts, T-shirts, Polo, Hoodies & Jackets</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Sweaters, Caps, Hats, & Uniforms</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Custom Lanyards, ID Cards & Wristbands</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Drink Ware (Thermal Mugs, Water Bottles)</li>
+                <li class="flex items-center gap-2"><span class="text-brandRed">✔</span> Wall Clocks, Umbrellas & 3D Signage</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20want%20to%20order%20Material%20Branding%20(From%2015,000%20UGX)" 
+               target="_blank" 
+               class="w-full py-3.5 rounded-xl bg-brandDark hover:bg-black text-white font-display font-bold text-center block shadow-lg hover:shadow-xl transition-all">
+              Order This Service →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. OUR WORK / PORTFOLIO ==================== -->
+  <section id="portfolio" class="py-20 bg-slate-900 text-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-block px-4 py-1 rounded-full bg-white/10 text-brandYellow font-semibold text-xs tracking-wider uppercase mb-3">
+          Real Projects • Real Clients
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white">
+          Our Recent Works in Uganda
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mt-3">
+          Explore real branding and printing solutions fabricated for Ugandan businesses, salons, and educational institutions.
+        </p>
+        <div class="w-20 h-1.5 bg-brandRed mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Filter Buttons (JavaScript Powered) -->
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12" id="portfolioFilterContainer">
+        <button class="portfolio-filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all bg-brandYellow text-brandDark shadow-lg" data-filter="all">
+          All Works
+        </button>
+        <button class="portfolio-filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all bg-white/10 text-white hover:bg-white/20" data-filter="signage">
+          Signage
+        </button>
+        <button class="portfolio-filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all bg-white/10 text-white hover:bg-white/20" data-filter="school">
+          School Branding
+        </button>
+        <button class="portfolio-filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all bg-white/10 text-white hover:bg-white/20" data-filter="shop">
+          Shop Branding
+        </button>
+        <button class="portfolio-filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all bg-white/10 text-white hover:bg-white/20" data-filter="flyer">
+          Flyer Design
+        </button>
+      </div>
+
+      <!-- 6 Portfolio Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
+        
+        <!-- img1.jpg: UMOJA Unisex Salon -->
+        <div class="portfolio-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl card-hover group" data-category="signage shop">
+          <div class="relative overflow-hidden aspect-[4/3] bg-black">
+            <img src="/assets/aistudio/IMG-20261102-WA0144_a82eba27.jpg" 
+                 alt="UMOJA Unisex Salon - 3D Lightbox Signage" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 referrerPolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='img1.jpg';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+            <span class="absolute top-3 left-3 bg-brandYellow text-brandDark font-black text-xs px-2.5 py-1 rounded-md shadow">
+              Signage / Shop
+            </span>
+            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md">
+              UMOJA Salon
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-xl text-white group-hover:text-brandYellow transition-colors">
+              UMOJA Unisex Salon
+            </h4>
+            <p class="text-sm font-semibold text-brandYellow mt-1">3D Lightbox Signage - Yellow & Black</p>
+            <p class="text-xs text-slate-300 mt-2">Custom-molded acrylic with internal ultra-bright LED illumination engineered for 24/7 visibility on high-traffic streets.</p>
+          </div>
+        </div>
+
+        <!-- img3.jpg: Bishop Willigers School Signage -->
+        <div class="portfolio-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl card-hover group" data-category="school signage">
+          <div class="relative overflow-hidden aspect-[4/3] bg-black">
+            <img src="/assets/aistudio/IMG-20261102-WA0102_5d25bdea.jpg" 
+                 alt="Bishop Willigers Memorial School - Illuminated 3D Letters" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 referrerPolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='img3.jpg';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+            <span class="absolute top-3 left-3 bg-brandRed text-white font-black text-xs px-2.5 py-1 rounded-md shadow">
+              School / Signage
+            </span>
+            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md">
+              Bishop Willigers
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-xl text-white group-hover:text-brandYellow transition-colors">
+              Bishop Willigers Memorial School
+            </h4>
+            <p class="text-sm font-semibold text-brandYellow mt-1">Illuminated 3D Letters - "Wisdom is Divine" - Iganga</p>
+            <p class="text-xs text-slate-300 mt-2">Fabricated architectural stainless steel lettering with halo LED glow mounted at main administrative gate.</p>
+          </div>
+        </div>
+
+        <!-- img4.jpg: NeiGlow Skin Care -->
+        <div class="portfolio-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl card-hover group" data-category="shop">
+          <div class="relative overflow-hidden aspect-[4/3] bg-black">
+            <img src="/assets/images/neiglow_glass_branding_1793961874144.jpg" 
+                 alt="NeiGlow Skin Care - Glass Door Branding" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 referrerPolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='img4.jpg';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+            <span class="absolute top-3 left-3 bg-pink-600 text-white font-black text-xs px-2.5 py-1 rounded-md shadow">
+              Shop Branding
+            </span>
+            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md">
+              NeiGlow
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-xl text-white group-hover:text-brandYellow transition-colors">
+              NeiGlow Skin Care
+            </h4>
+            <p class="text-sm font-semibold text-brandYellow mt-1">Glass Door Branding - "Where Beauty Meets Ambition"</p>
+            <p class="text-xs text-slate-300 mt-2">Precision frosted vinyl cut with metallic gold foil accents ensuring private elegance and aesthetic appeal.</p>
+          </div>
+        </div>
+
+        <!-- img5.jpg: Beauty by Gisel -->
+        <div class="portfolio-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl card-hover group" data-category="shop signage">
+          <div class="relative overflow-hidden aspect-[4/3] bg-black">
+            <img src="/assets/images/beauty_by_gisel_signage_1793961874900.jpg" 
+                 alt="Beauty by Gisel - 3D Illuminated Shop Sign" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 referrerPolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='img5.jpg';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+            <span class="absolute top-3 left-3 bg-purple-600 text-white font-black text-xs px-2.5 py-1 rounded-md shadow">
+              Shop / Signage
+            </span>
+            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md">
+              Beauty by Gisel
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-xl text-white group-hover:text-brandYellow transition-colors">
+              Beauty by Gisel
+            </h4>
+            <p class="text-sm font-semibold text-brandYellow mt-1">3D Illuminated Shop Sign - Bags, Wigs, Shoes</p>
+            <p class="text-xs text-slate-300 mt-2">Full boutique storefront facade branding including lighted dimensional canopy and display graphics.</p>
+          </div>
+        </div>
+
+        <!-- img6.jpg -->
+        <div class="portfolio-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl card-hover group" data-category="signage flyer">
+          <div class="relative overflow-hidden aspect-[4/3] bg-black">
+            <img src="/assets/images/printing_press_workshop_1793960828694.jpg" 
+                 alt="DEON Printing Office - Production Hub" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 referrerPolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='img6.jpg';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+            <span class="absolute top-3 left-3 bg-blue-600 text-white font-black text-xs px-2.5 py-1 rounded-md shadow">
+              DEON Hub
+            </span>
+            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md">
+              Zebra House
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-xl text-white group-hover:text-brandYellow transition-colors">
+              DEON Printing Office
+            </h4>
+            <p class="text-sm font-semibold text-brandYellow mt-1">Digital Printing, Stationery, Design - Nasser Rd</p>
+            <p class="text-xs text-slate-300 mt-2">Our modern printing machinery setup at Zebra House Level 1 producing large format banners and books.</p>
+          </div>
+        </div>
+
+        <!-- img2.jpg -->
+        <div class="portfolio-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl card-hover group" data-category="school flyer">
+          <div class="relative overflow-hidden aspect-[4/3] bg-black">
+            <img src="/assets/images/deon_flyer_showcase_1793960828642.jpg" 
+                 alt="Hands of Grace School - Admission Flyer Design & Printing" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 referrerPolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='img2.jpg';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+            <span class="absolute top-3 left-3 bg-brandRed text-white font-black text-xs px-2.5 py-1 rounded-md shadow">
+              School / Flyer
+            </span>
+            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md">
+              Hands of Grace
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-xl text-white group-hover:text-brandYellow transition-colors">
+              Hands of Grace School
+            </h4>
+            <p class="text-sm font-semibold text-brandYellow mt-1">Admission Flyer Design & Printing 2026 - Mukono</p>
+            <p class="text-xs text-slate-300 mt-2">10,000 double-sided glossy recruitment flyers with photo correction, spot UV gloss, and quick distribution.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. MVO SYSTEM FLOW SECTION ==================== -->
+  <section id="system-flow" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block px-4 py-1 rounded-full bg-brandNavy/10 text-brandNavy font-semibold text-xs tracking-wider uppercase mb-3">
+          Process Transparency
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-brandNavy">
+          MVO System Flow - How Your Order Moves From Idea To Delivery
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg mt-3">
+          Our refined, fail-safe 6-step production cycle guarantees speed, zero errors, and complete peace of mind.
+        </p>
+        <div class="w-20 h-1.5 bg-brandRed mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 6 Numbered Steps Visual Flow -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+        
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm relative card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-brandNavy text-brandYellow font-display font-black text-xl flex items-center justify-center shadow-md">
+              01
+            </span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 1</span>
+          </div>
+          <h4 class="font-display font-bold text-xl text-brandNavy mb-2">Customer Sends Order</h4>
+          <p class="text-sm text-slate-600">
+            Submit through our online form, direct WhatsApp (+256701099816), or visit our counter at Zebra House, Nasser Road.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm relative card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-brandRed text-white font-display font-black text-xl flex items-center justify-center shadow-md">
+              02
+            </span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 2</span>
+          </div>
+          <h4 class="font-display font-bold text-xl text-brandNavy mb-2">Design & Quote</h4>
+          <p class="text-sm text-slate-600">
+            Our graphic artists review your concept, prepare a <strong>Free Sample / Digital Mockup</strong>, and send the exact price in 10 minutes.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm relative card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-brandYellow text-brandDark font-display font-black text-xl flex items-center justify-center shadow-md">
+              03
+            </span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 3</span>
+          </div>
+          <h4 class="font-display font-bold text-xl text-brandNavy mb-2">Approve & Pay 50%</h4>
+          <p class="text-sm text-slate-600">
+            Approve proof, pay 50% deposit smoothly via MTN MoMo, Airtel Money, Bank Transfer, or Cash at the counter.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm relative card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-brandNavy text-white font-display font-black text-xl flex items-center justify-center shadow-md">
+              04
+            </span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 4</span>
+          </div>
+          <h4 class="font-display font-bold text-xl text-brandNavy mb-2">Printing / Production</h4>
+          <p class="text-sm text-slate-600">
+            Production on high-speed Japanese printing engines and precision cutters followed by strict multi-point Quality Checks.
+          </p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm relative card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-emerald-600 text-white font-display font-black text-xl flex items-center justify-center shadow-md">
+              05
+            </span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 5</span>
+          </div>
+          <h4 class="font-display font-bold text-xl text-brandNavy mb-2">Delivery / Installation</h4>
+          <p class="text-sm text-slate-600">
+            Same-day Boda / Courier delivery across Kampala, bus parcel dispatch upcountry, and expert on-site sign installation.
+          </p>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm relative card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-purple-600 text-white font-display font-black text-xl flex items-center justify-center shadow-md">
+              06
+            </span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 6</span>
+          </div>
+          <h4 class="font-display font-bold text-xl text-brandNavy mb-2">Happy Client</h4>
+          <p class="text-sm text-slate-600">
+            Final client verification, 5-star review, warranty protection, and repeat business partnership with VIP loyalty perks.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Admin System Flow Box -->
+      <div class="mt-14 bg-gradient-to-r from-brandNavy to-[#08184d] rounded-3xl p-8 sm:p-10 text-white shadow-xl border border-white/10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 rounded bg-brandYellow text-brandDark font-display font-black text-xs uppercase">
+            Admin Backend Architecture
+          </span>
+          <span class="text-xs text-slate-300">Firestore Powered Sync</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-4">
+          Real-time Order Lifecycle Pipeline
+        </h3>
+        
+        <div class="bg-black/40 rounded-2xl p-6 border border-white/10 font-mono text-xs sm:text-sm text-slate-200 leading-relaxed overflow-x-auto">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold">1. Customer Order</span>
+            <span>➔</span>
+            <span class="px-3 py-1.5 rounded-lg bg-purple-600 text-white font-bold">2. Saved in Firebase Firestore (collection: orders)</span>
+            <span>➔</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-700 text-white font-bold">3. Admin sees in Dashboard</span>
+            <span>➔</span>
+            <span class="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-bold">4. Admin updates status: Pending ➔ Designing ➔ Printing ➔ Ready ➔ Delivered</span>
+            <span>➔</span>
+            <span class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold">5. Customer gets WhatsApp update</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 7. MVP SECTION ==================== -->
+  <section class="py-16 bg-slate-50 border-t border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs uppercase tracking-wider">
+            Production MVP Release
+          </span>
+          <span class="text-xs text-slate-400">• Version 1.0 Live</span>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-display font-extrabold text-brandNavy mb-4">
+          Minimum Viable Product (MVP) Status
+        </h3>
+
+        <!-- Simple Box explaining MVP -->
+        <div class="bg-blue-50 border-l-4 border-brandNavy p-5 rounded-r-xl mb-8">
+          <p class="text-slate-800 font-medium text-base sm:text-lg">
+            “Our MVP is live now: 1) Website with portfolio, 2) Online order form connected to Firebase, 3) WhatsApp auto-order, 4) Admin can view orders. Next version will add: Online payment, Delivery tracking, Customer login.”
+          </p>
+        </div>
+
+        <!-- Checklist Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200">
+            <h4 class="font-display font-bold text-emerald-900 mb-3 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold">✓</span>
+              Live in MVP (Now Operational)
+            </h4>
+            <ul class="space-y-2.5 text-sm text-slate-700">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-600 font-bold">✔</span> Full responsive showcase & interactive portfolio filtering
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-600 font-bold">✔</span> Online order form connected directly to Firebase Firestore
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-600 font-bold">✔</span> Seamless WhatsApp auto-order generator with order details
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-600 font-bold">✔</span> Password-protected Admin order management portal
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-600 font-bold">✔</span> Instant UGX price estimator with urgency multipliers
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-200">
+            <h4 class="font-display font-bold text-amber-900 mb-3 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs flex items-center justify-center font-bold">⏳</span>
+              Next Version Roadmap (Phase 2)
+            </h4>
+            <ul class="space-y-2.5 text-sm text-slate-700">
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">⏳</span> Direct Online MoMo & Card Payment Gateway (MTN & Airtel API)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">⏳</span> Live GPS Parcel & Signage Delivery Tracking
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">⏳</span> Registered Customer Login & Re-order Artwork Archive
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">⏳</span> Automated SMS invoice and ready-for-pickup notifications
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 10. PRICE CALCULATOR ==================== -->
+  <section id="calculator" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-block px-4 py-1 rounded-full bg-brandYellow/30 text-brandDark font-semibold text-xs tracking-wider uppercase mb-3">
+          Instant Cost Estimator
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-brandNavy">
+          Price Calculator
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2">
+          Select your product, adjust quantity and urgency to compute instant estimate in Ugandan Shillings (UGX).
+        </p>
+      </div>
+
+      <div class="bg-slate-50 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Product Select -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              Select Product
+            </label>
+            <select id="calcProduct" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-800 font-medium focus:ring-2 focus:ring-brandNavy focus:outline-none transition-all">
+              <option value="120000" data-name="Pull Up Banner">Pull Up Banner (120,000 UGX)</option>
+              <option value="150000" data-name="Business Cards (1000pcs)">Business Cards 1000pcs (150,000 UGX)</option>
+              <option value="25000" data-name="T-Shirt Branding">T-Shirt Branding (25,000 UGX each)</option>
+              <option value="350000" data-name="3D Illuminated Signage">3D Signage (Base 350,000 UGX / Quote)</option>
+              <option value="140000" data-name="Teardrop Banner">Teardrop Banner (140,000 UGX)</option>
+              <option value="45000" data-name="Window Graphics / Vinyl per sqm">Window Vinyl / Stickers per sq m (45,000 UGX)</option>
+              <option value="20000" data-name="Branded Mugs / Caps">Branded Mugs / Caps (20,000 UGX each)</option>
+            </select>
+          </div>
+
+          <!-- Quantity Input -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              Quantity
+            </label>
+            <div class="flex items-center">
+              <button type="button" id="calcQtyDec" class="w-12 h-12 bg-slate-200 hover:bg-slate-300 rounded-l-xl font-bold text-xl text-slate-700 transition-colors">-</button>
+              <input type="number" id="calcQty" value="1" min="1" max="10000" class="w-full h-12 text-center border-t border-b border-slate-300 bg-white font-bold text-slate-800 focus:outline-none">
+              <button type="button" id="calcQtyInc" class="w-12 h-12 bg-slate-200 hover:bg-slate-300 rounded-r-xl font-bold text-xl text-slate-700 transition-colors">+</button>
+            </div>
+          </div>
+
+          <!-- Urgency Select -->
+          <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              Production Urgency
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label class="flex items-center p-4 rounded-xl border border-slate-300 bg-white cursor-pointer hover:border-brandNavy transition-all has-[:checked]:border-brandNavy has-[:checked]:bg-blue-50/50">
+                <input type="radio" name="calcUrgency" value="1.0" checked class="text-brandNavy focus:ring-brandNavy w-4 h-4">
+                <div class="ml-3">
+                  <div class="text-sm font-bold text-slate-800">Normal (2-3 Days)</div>
+                  <div class="text-xs text-slate-500">Standard rate (x1.0)</div>
+                </div>
+              </label>
+
+              <label class="flex items-center p-4 rounded-xl border border-slate-300 bg-white cursor-pointer hover:border-brandRed transition-all has-[:checked]:border-brandRed has-[:checked]:bg-red-50/50">
+                <input type="radio" name="calcUrgency" value="1.5" class="text-brandRed focus:ring-brandRed w-4 h-4">
+                <div class="ml-3">
+                  <div class="text-sm font-bold text-brandRed">Urgent Same Day (24 hrs)</div>
+                  <div class="text-xs text-slate-500">Fast-track priority (x1.5)</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Calculated Output -->
+        <div class="mt-8 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6 bg-brandNavy text-white p-6 rounded-2xl">
+          <div>
+            <span class="text-xs text-slate-300 uppercase tracking-widest font-semibold">Estimated Total Price</span>
+            <div class="text-3xl sm:text-4xl font-display font-black text-brandYellow mt-1" id="calcTotalDisplay">
+              120,000 UGX
+            </div>
+            <p class="text-xs text-slate-300 mt-1" id="calcBreakdownText">
+              1 x Pull Up Banner @ Normal 2-3 Days
+            </p>
+          </div>
+
+          <button id="calcOrderBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brandRed hover:bg-red-600 text-white font-display font-bold text-base shadow-lg hover:shadow-xl transition-all whitespace-nowrap flex items-center justify-center gap-2">
+            <span>Order This Price</span>
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 8. ORDER SYSTEM + FIREBASE ==================== -->
+  <section id="order" class="py-20 bg-slate-900 text-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block px-4 py-1 rounded-full bg-brandRed/20 text-red-400 font-semibold text-xs tracking-wider uppercase mb-3">
+          Direct Booking
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white">
+          Place Your Printing Order
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mt-3">
+          Fill in your details below. Your order will be stored safely in Firebase Firestore, and an instant WhatsApp message will be pre-filled for you!
+        </p>
+        <div class="w-20 h-1.5 bg-brandYellow mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Order Form Card -->
+        <div class="lg:col-span-7 bg-slate-800/90 rounded-3xl p-8 sm:p-10 border border-slate-700 shadow-2xl backdrop-blur-md">
+          
+          <form id="orderForm" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Full Name -->
+              <div>
+                <label for="orderName" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  Full Name <span class="text-brandRed">*</span>
+                </label>
+                <input type="text" id="orderName" required placeholder="e.g. Linus Mugisha" 
+                       class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-brandYellow focus:outline-none transition-all">
+              </div>
+
+              <!-- Phone / WhatsApp -->
+              <div>
+                <label for="orderPhone" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  Phone / WhatsApp <span class="text-brandRed">*</span>
+                </label>
+                <input type="tel" id="orderPhone" required placeholder="e.g. +256 701 099816" 
+                       class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-brandYellow focus:outline-none transition-all">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Service Dropdown -->
+              <div>
+                <label for="orderService" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  Service Required <span class="text-brandRed">*</span>
+                </label>
+                <select id="orderService" required 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:ring-2 focus:ring-brandYellow focus:outline-none transition-all">
+                  <option value="Large Format Printing">Large Format Printing</option>
+                  <option value="Digital Printing">Digital Printing</option>
+                  <option value="Material Branding">Material Branding</option>
+                  <option value="Logo Design">Logo Design</option>
+                  <option value="Full Shop Branding">Full Shop Branding</option>
+                </select>
+              </div>
+
+              <!-- Quantity -->
+              <div>
+                <label for="orderQuantity" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  Quantity <span class="text-brandRed">*</span>
+                </label>
+                <input type="number" id="orderQuantity" min="1" value="1" required 
+                       class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:ring-2 focus:ring-brandYellow focus:outline-none transition-all">
+              </div>
+            </div>
+
+            <!-- Urgency Dropdown -->
+            <div>
+              <label for="orderUrgency" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                Order Urgency
+              </label>
+              <select id="orderUrgency" 
+                      class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:ring-2 focus:ring-brandYellow focus:outline-none transition-all">
+                <option value="Normal 2-3 Days">Normal 2-3 Days</option>
+                <option value="Urgent Same Day 24hrs">Urgent Same Day 24hrs</option>
+              </select>
+            </div>
+
+            <!-- Details Textarea -->
+            <div>
+              <label for="orderDetails" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                Details (What do you want?)
+              </label>
+              <textarea id="orderDetails" rows="4" placeholder="Describe size, dimensions, colors, materials, text or any special instructions..." 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-brandYellow focus:outline-none transition-all"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="orderSubmitBtn" class="w-full py-4 rounded-xl bg-brandRed hover:bg-red-600 text-white font-display font-black text-lg shadow-xl shadow-red-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+              <span id="orderSubmitText">Submit & Send to WhatsApp</span>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2"/>
+              </svg>
+            </button>
+
+            <!-- Form Success Notification Box -->
+            <div id="orderSuccessMsg" class="hidden p-4 rounded-xl bg-emerald-900/80 border border-emerald-500 text-emerald-200 text-sm">
+              <div class="font-bold text-white flex items-center gap-2">
+                <span>🎉 Order Saved!</span>
+              </div>
+              <p class="mt-1">We will call you in 10 minutes. Opening WhatsApp now...</p>
+            </div>
+
+          </form>
+
+        </div>
+
+        <!-- Right Side: Live Recent Orders + Trust Info -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Live Recent Orders Card -->
+          <div class="bg-slate-800/80 rounded-3xl p-6 sm:p-8 border border-slate-700">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h3 class="font-display font-bold text-lg text-white">Live Recent Orders</h3>
+                <p class="text-xs text-slate-400">Real-time sync from Firestore collection 'orders'</p>
+              </div>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+            </div>
+
+            <!-- Recent Orders List -->
+            <div id="recentOrdersList" class="space-y-3">
+              <!-- Dynamically populated or skeleton -->
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/60 flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-white text-sm">Hands of Grace School</div>
+                  <div class="text-xs text-slate-400">Digital Printing • Admission Flyers</div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Printing</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/60 flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-white text-sm">UMOJA Unisex Salon</div>
+                  <div class="text-xs text-slate-400">Material Branding • 3D Signage</div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Delivered</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/60 flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-white text-sm">NeiGlow Skin Care</div>
+                  <div class="text-xs text-slate-400">Large Format • Glass Vinyl</div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/40">Designing</span>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-slate-700/60 text-center">
+              <span class="text-xs text-slate-400">Every order is backed by DEON's 100% Quality Guarantee</span>
+            </div>
+          </div>
+
+          <!-- Walk-in Notice -->
+          <div class="bg-gradient-to-br from-brandNavy to-[#122870] rounded-3xl p-6 sm:p-8 border border-white/10 text-white">
+            <h4 class="font-display font-bold text-lg text-brandYellow mb-2">Prefer In-Person Ordering?</h4>
+            <p class="text-sm text-slate-200 mb-4">
+              Visit our showroom and production house to inspect physical paper weights, banner textures, and 3D acrylic samples.
+            </p>
+            <div class="space-y-1 text-xs text-slate-300">
+              <p>📍 Zebra House Level 1, Nasser Road, Kampala</p>
+              <p>⏰ Mon - Sat 8:00 AM - 7:00 PM (Sunday Closed)</p>
+              <p>📞 Express Help: +256 701099816</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 9. ADMIN DASHBOARD ==================== -->
+  <section id="admin" class="py-20 bg-slate-100 border-t border-slate-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-block px-4 py-1 rounded-full bg-slate-200 text-slate-800 font-semibold text-xs tracking-wider uppercase mb-2">
+          Internal Portal
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-brandNavy">
+          Admin Dashboard
+        </h2>
+        <p class="text-slate-600 text-sm mt-1">
+          Authorized personnel only. Manage incoming Firestore orders, update statuses, and notify clients.
+        </p>
+      </div>
+
+      <!-- Admin Login Box (Hidden when logged in) -->
+      <div id="adminLoginBox" class="max-w-md mx-auto bg-white rounded-3xl p-8 shadow-xl border border-slate-200">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brandYellow mx-auto mb-3 shadow-md bg-white p-0.5">
+            <img src="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" alt="DEON ENTERPRISE Logo" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='logo.jpg';" />
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-800">Admin Authentication</h3>
+          <p class="text-xs text-slate-500 mt-1">Default password: <code class="bg-slate-100 px-2 py-0.5 rounded font-mono text-brandRed">deon123</code></p>
+        </div>
+
+        <form id="adminLoginForm" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+              Admin Password
+            </label>
+            <input type="password" id="adminPassword" placeholder="Enter password" required 
+                   class="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-800 focus:ring-2 focus:ring-brandNavy focus:outline-none">
+          </div>
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-brandNavy hover:bg-navy-900 text-white font-display font-bold shadow-lg transition-all">
+            Access Dashboard
+          </button>
+          <div id="adminLoginError" class="hidden text-xs text-brandRed font-semibold text-center mt-2">
+            Incorrect password. Please try again.
+          </div>
+        </form>
+      </div>
+
+      <!-- Admin Dashboard Panel (Shown after login) -->
+      <div id="adminDashboardPanel" class="hidden space-y-6">
+        
+        <!-- Header & Action Bar -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 class="font-display font-bold text-xl text-brandNavy flex items-center gap-2">
+              <span>Orders Management</span>
+              <span id="orderCountBadge" class="px-2.5 py-0.5 rounded-full bg-brandNavy text-white text-xs font-bold">0 orders</span>
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">Firebase Collection: <code class="text-brandRed">orders</code></p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="refreshOrdersBtn" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              Refresh Orders
+            </button>
+            <button id="adminLogoutBtn" class="px-4 py-2 rounded-xl bg-red-100 hover:bg-red-200 text-brandRed text-xs font-bold transition-colors">
+              Log Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Orders Table Card -->
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <th class="py-4 px-6">Customer</th>
+                  <th class="py-4 px-6">Phone</th>
+                  <th class="py-4 px-6">Service</th>
+                  <th class="py-4 px-6">Quantity / Urgency</th>
+                  <th class="py-4 px-6">Details</th>
+                  <th class="py-4 px-6">Status</th>
+                  <th class="py-4 px-6">Date</th>
+                  <th class="py-4 px-6 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminOrdersTbody" class="divide-y divide-slate-100">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="noOrdersAlert" class="hidden p-12 text-center text-slate-400">
+            No orders found yet. As soon as clients place orders, they will appear here in real time.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 11. CONTACT & FOOTER ==================== -->
+  <footer id="contact" class="bg-brandDark text-white pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Contact Cards Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Location -->
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-brandRed/20 text-brandRed flex items-center justify-center text-xl mb-4 font-bold">
+            📍
+          </div>
+          <h4 class="font-display font-bold text-white text-base">Our Location</h4>
+          <p class="text-sm text-slate-300 mt-2">
+            Zebra House Level 1, Nasser Road, Kampala, Uganda
+          </p>
+          <a href="https://maps.google.com/?q=Nasser+Road+Kampala+Uganda" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-xs text-brandYellow hover:underline font-semibold">
+            View on Google Maps →
+          </a>
+        </div>
+
+        <!-- Phone / WhatsApp -->
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4 font-bold">
+            📞
+          </div>
+          <h4 class="font-display font-bold text-white text-base">Phone & WhatsApp</h4>
+          <p class="text-sm text-slate-300 mt-2 font-mono">
+            +256 701099816
+          </p>
+          <a href="https://wa.me/256701099816" target="_blank" class="inline-block mt-3 text-xs text-emerald-400 hover:underline font-semibold">
+            Chat on WhatsApp →
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4 font-bold">
+            ✉️
+          </div>
+          <h4 class="font-display font-bold text-white text-base">Email Inquiries</h4>
+          <p class="text-sm text-slate-300 mt-2">
+            deonlinus7@gmail.com
+          </p>
+          <a href="mailto:deonlinus7@gmail.com" class="inline-block mt-3 text-xs text-blue-400 hover:underline font-semibold">
+            Send an Email →
+          </a>
+        </div>
+
+        <!-- Hours & Social -->
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-brandYellow/20 text-brandYellow flex items-center justify-center text-xl mb-4 font-bold">
+            ⏰
+          </div>
+          <h4 class="font-display font-bold text-white text-base">Working Hours</h4>
+          <p class="text-xs text-slate-300 mt-2">
+            Mon - Sat: 8:00 AM - 7:00 PM<br/>
+            Sunday: Closed
+          </p>
+          <p class="text-xs text-pink-400 mt-2 font-semibold">
+            Instagram: @DeonEnterprise
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full overflow-hidden border border-brandYellow/60 bg-white shrink-0 p-0.5 shadow">
+            <img src="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" alt="DEON Logo" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='logo.jpg';" />
+          </div>
+          <div>
+            <span class="font-display font-bold text-white text-sm">DEON ENTERPRISE</span> — <span class="text-brandYellow">Beyond Service</span>
+          </div>
+        </div>
+        <div>
+          Copyright © 2026 DEON ENTERPRISE. All Rights Reserved. Built by Deon.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+  <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20have%20an%20inquiry%20about%20your%20printing%20services" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     aria-label="Chat on WhatsApp" 
+     class="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all animate-pulse-slow">
+    <svg class="w-8 h-8 sm:w-9 sm:h-9 fill-current" viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.33C9.35 7.33 9.07 7.4 8.84 7.64C8.61 7.89 7.97 8.49 7.97 9.71C7.97 10.93 8.86 12.11 9 12.27C9.14 12.43 10.79 14.97 13.3 16.06C13.9 16.32 14.36 16.47 14.72 16.59C15.32 16.78 15.87 16.75 16.3 16.69C16.78 16.62 17.78 16.08 17.99 15.48C18.2 14.88 18.2 14.37 18.14 14.27C18.08 14.17 17.9 14.11 17.63 13.97C17.36 13.84 16.04 13.19 15.8 13.1C15.56 13.01 15.38 12.97 15.2 13.24C15.02 13.51 14.51 14.11 14.35 14.29C14.19 14.47 14.04 14.5 13.77 14.37C13.5 14.24 12.63 13.95 11.6 13.03C10.8 12.31 10.26 11.43 10.12 11.16C9.97 10.89 10.1 10.74 10.24 10.61C10.36 10.49 10.51 10.3 10.64 10.14C10.77 10 10.82 9.89 10.91 9.71C11 9.53 10.95 9.38 10.89 9.24C10.83 9.11 10.3 7.81 10.08 7.28C9.86 6.76 9.64 6.84 9.48 6.83L9.04 6.83C8.86 6.83 8.57 6.9 8.35 7.14C8.13 7.38 7.5 7.97 7.5 9.2Z"/>
+    </svg>
+  </a>
+
+  <!-- ==================== JAVASCRIPT & FIREBASE INTEGRATION ==================== -->
+  <script type="module">
+    // Firebase v10 Modular SDK Configuration
+    // Replace with your Firebase console project settings when deploying:
+    const firebaseConfig = {
+      apiKey: "PASTE_YOUR_API_KEY",
+      authDomain: "deon-enterprise.firebaseapp.com",
+      projectId: "deon-enterprise",
+      storageBucket: "deon-enterprise.appspot.com",
+      messagingSenderId: "PASTE_SENDER_ID",
+      appId: "PASTE_APP_ID"
+    };
+
+    let db = null;
+    let isFirebaseReady = false;
+
+    // Async loader for Firebase Modular SDK with robust fallback
+    async function initFirebase() {
+      if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "PASTE_YOUR_API_KEY") {
+        try {
+          const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js');
+          const { getFirestore } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js');
+          const app = initializeApp(firebaseConfig);
+          db = getFirestore(app);
+          isFirebaseReady = true;
+          console.log("Firebase Firestore connected successfully!");
+        } catch (err) {
+          console.warn("Firebase initialization warning (using local store fallback):", err);
+          isFirebaseReady = false;
+        }
+      } else {
+        console.log("Running in offline/local mode until Firebase keys are pasted into index.html.");
+        isFirebaseReady = false;
+      }
+    }
+
+    // Local Storage Mock Orders Database for instant out-of-the-box demo
+    const LOCAL_STORAGE_KEY = "deon_orders_db";
+    function getLocalOrders() {
+      const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (!stored) {
+        const seedOrders = [
+          {
+            id: 'ord_1',
+            name: 'Bishop Willigers Memorial School',
+            phone: '+256772123456',
+            service: 'Material Branding',
+            details: 'Illuminated 3D Letters - "Wisdom is Divine" for Iganga campus gate',
+            urgency: 'Normal 2-3 Days',
+            quantity: 1,
+            status: 'Ready',
+            createdAt: new Date(Date.now() - 3600000 * 5).toISOString()
+          },
+          {
+            id: 'ord_2',
+            name: 'Hands of Grace Nursery & Primary',
+            phone: '+256701889900',
+            service: 'Digital Printing',
+            details: 'Admission Flyer Design & Printing 2026 - 5,000 pcs gloss 150gsm',
+            urgency: 'Urgent Same Day 24hrs',
+            quantity: 5000,
+            status: 'Printing',
+            createdAt: new Date(Date.now() - 3600000 * 2).toISOString()
+          },
+          {
+            id: 'ord_3',
+            name: 'NeiGlow Skin Care',
+            phone: '+256755443322',
+            service: 'Full Shop Branding',
+            details: 'Glass door frosted branding "Where Beauty Meets Ambition"',
+            urgency: 'Normal 2-3 Days',
+            quantity: 1,
+            status: 'Designing',
+            createdAt: new Date(Date.now() - 3600000 * 1).toISOString()
+          }
+        ];
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(seedOrders));
+        return seedOrders;
+      }
+      try {
+        return JSON.parse(stored);
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveLocalOrders(orders) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(orders));
+    }
+
+    // DOM Elements
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const orderForm = document.getElementById('orderForm');
+    const orderSuccessMsg = document.getElementById('orderSuccessMsg');
+    const recentOrdersList = document.getElementById('recentOrdersList');
+
+    // Mobile Menu Toggle
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Portfolio Filter Logic
+    const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Style active button
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-brandYellow', 'text-brandDark', 'shadow-lg');
+          b.classList.add('bg-white/10', 'text-white');
+        });
+        btn.classList.add('bg-brandYellow', 'text-brandDark', 'shadow-lg');
+        btn.classList.remove('bg-white/10', 'text-white');
+
+        // Filter cards
+        portfolioCards.forEach(card => {
+          const category = card.getAttribute('data-category') || '';
+          if (filter === 'all' || category.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Price Calculator Logic
+    const calcProduct = document.getElementById('calcProduct');
+    const calcQty = document.getElementById('calcQty');
+    const calcQtyInc = document.getElementById('calcQtyInc');
+    const calcQtyDec = document.getElementById('calcQtyDec');
+    const calcTotalDisplay = document.getElementById('calcTotalDisplay');
+    const calcBreakdownText = document.getElementById('calcBreakdownText');
+    const calcOrderBtn = document.getElementById('calcOrderBtn');
+
+    function calculatePrice() {
+      const basePrice = parseInt(calcProduct.value, 10) || 0;
+      const qty = Math.max(1, parseInt(calcQty.value, 10) || 1);
+      const urgencyRadio = document.querySelector('input[name="calcUrgency"]:checked');
+      const multiplier = urgencyRadio ? parseFloat(urgencyRadio.value) : 1.0;
+      
+      const total = Math.round(basePrice * qty * multiplier);
+      calcTotalDisplay.textContent = total.toLocaleString() + ' UGX';
+
+      const productName = calcProduct.options[calcProduct.selectedIndex].getAttribute('data-name');
+      const urgencyText = multiplier > 1 ? 'Urgent Same Day (x1.5)' : 'Normal (2-3 Days)';
+      calcBreakdownText.textContent = `${qty} x ${productName} @ ${urgencyText}`;
+      
+      return { total, qty, productName, urgencyText };
+    }
+
+    calcProduct?.addEventListener('change', calculatePrice);
+    calcQty?.addEventListener('input', calculatePrice);
+    document.querySelectorAll('input[name="calcUrgency"]').forEach(r => r.addEventListener('change', calculatePrice));
+
+    calcQtyInc?.addEventListener('click', () => {
+      calcQty.value = (parseInt(calcQty.value, 10) || 0) + 1;
+      calculatePrice();
+    });
+
+    calcQtyDec?.addEventListener('click', () => {
+      const current = parseInt(calcQty.value, 10) || 1;
+      if (current > 1) {
+        calcQty.value = current - 1;
+        calculatePrice();
+      }
+    });
+
+    calcOrderBtn?.addEventListener('click', () => {
+      const { total, qty, productName, urgencyText } = calculatePrice();
+      const message = `Hello DEON ENTERPRISE, I calculated a quote on your website:
+Product: ${productName}
+Quantity: ${qty}
+Urgency: ${urgencyText}
+Total Price: ${total.toLocaleString()} UGX
+Please confirm my order!`;
+      
+      const whatsappUrl = `https://wa.me/256701099816?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+
+    // Render Recent Orders List
+    function renderRecentOrders(orders) {
+      if (!recentOrdersList) return;
+      const displayOrders = orders.slice(0, 5);
+      
+      recentOrdersList.innerHTML = displayOrders.map(ord => {
+        let statusBg = 'bg-blue-500/20 text-blue-300 border-blue-500/40';
+        if (ord.status === 'Ready') statusBg = 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+        if (ord.status === 'Printing') statusBg = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+        if (ord.status === 'Delivered') statusBg = 'bg-purple-500/20 text-purple-300 border-purple-500/40';
+        if (ord.status === 'Pending') statusBg = 'bg-red-500/20 text-red-300 border-red-500/40';
+
+        return `
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/60 flex items-center justify-between">
+            <div>
+              <div class="font-semibold text-white text-sm">${escapeHtml(ord.name)}</div>
+              <div class="text-xs text-slate-400">${escapeHtml(ord.service)} • Qty: ${ord.quantity || 1}</div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${statusBg}">
+              ${escapeHtml(ord.status || 'Pending')}
+            </span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Form Submission & Order Saving
+    orderForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('orderName').value.trim();
+      const phone = document.getElementById('orderPhone').value.trim();
+      const service = document.getElementById('orderService').value;
+      const quantity = parseInt(document.getElementById('orderQuantity').value, 10) || 1;
+      const urgency = document.getElementById('orderUrgency').value;
+      const details = document.getElementById('orderDetails').value.trim();
+
+      const newOrder = {
+        name,
+        phone,
+        service,
+        quantity,
+        urgency,
+        details,
+        status: "Pending",
+        createdAt: new Date().toISOString()
+      };
+
+      // 1. Save to Firebase Firestore if configured
+      if (isFirebaseReady && db) {
+        try {
+          const { collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js');
+          await addDoc(collection(db, "orders"), {
+            ...newOrder,
+            createdAt: serverTimestamp()
+          });
+          console.log("Order saved to Firestore collection: orders");
+        } catch (err) {
+          console.error("Error saving to Firestore:", err);
+        }
+      }
+
+      // 2. Always persist locally as a dependable store
+      const localOrders = getLocalOrders();
+      newOrder.id = 'ord_' + Date.now();
+      localOrders.unshift(newOrder);
+      saveLocalOrders(localOrders);
+
+      // Refresh displays
+      renderRecentOrders(localOrders);
+      if (adminDashboardPanel && !adminDashboardPanel.classList.contains('hidden')) {
+        renderAdminOrders(localOrders);
+      }
+
+      // Show success message
+      orderSuccessMsg.classList.remove('hidden');
+
+      // Auto-open WhatsApp with structured order text
+      const waMessage = `Hello DEON ENTERPRISE, I placed an order on your website:
+Name: ${name}
+Phone: ${phone}
+Service: ${service}
+Quantity: ${quantity}
+Urgency: ${urgency}
+Details: ${details || 'None provided'}
+Status: Pending confirmation
+Please confirm my order!`;
+
+      const waLink = `https://wa.me/256701099816?text=${encodeURIComponent(waMessage)}`;
+
+      // Reset form
+      orderForm.reset();
+
+      setTimeout(() => {
+        window.open(waLink, '_blank');
+      }, 900);
+    });
+
+    // ==================== ADMIN PORTAL LOGIC ====================
+    const adminLoginBox = document.getElementById('adminLoginBox');
+    const adminDashboardPanel = document.getElementById('adminDashboardPanel');
+    const adminLoginForm = document.getElementById('adminLoginForm');
+    const adminPassword = document.getElementById('adminPassword');
+    const adminLoginError = document.getElementById('adminLoginError');
+    const adminOrdersTbody = document.getElementById('adminOrdersTbody');
+    const orderCountBadge = document.getElementById('orderCountBadge');
+    const refreshOrdersBtn = document.getElementById('refreshOrdersBtn');
+    const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+    const noOrdersAlert = document.getElementById('noOrdersAlert');
+
+    const DEFAULT_ADMIN_PASSWORD = 'deon123';
+
+    adminLoginForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (adminPassword.value === DEFAULT_ADMIN_PASSWORD) {
+        adminLoginError.classList.add('hidden');
+        adminLoginBox.classList.add('hidden');
+        adminDashboardPanel.classList.remove('hidden');
+        loadAllOrders();
+      } else {
+        adminLoginError.classList.remove('hidden');
+      }
+    });
+
+    adminLogoutBtn?.addEventListener('click', () => {
+      adminDashboardPanel.classList.add('hidden');
+      adminLoginBox.classList.remove('hidden');
+      adminPassword.value = '';
+    });
+
+    async function loadAllOrders() {
+      let orders = [];
+
+      // Try fetching from Firestore if active
+      if (isFirebaseReady && db) {
+        try {
+          const { collection, getDocs, query, orderBy, limit } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js');
+          const q = query(collection(db, "orders"), orderBy("createdAt", "desc"), limit(50));
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach(doc => {
+            const data = doc.data();
+            orders.push({
+              id: doc.id,
+              ...data,
+              createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : (data.createdAt || new Date().toISOString())
+            });
+          });
+        } catch (err) {
+          console.warn("Firestore fetch error, falling back to local orders:", err);
+          orders = getLocalOrders();
+        }
+      } else {
+        orders = getLocalOrders();
+      }
+
+      renderAdminOrders(orders);
+      renderRecentOrders(orders);
+    }
+
+    refreshOrdersBtn?.addEventListener('click', () => {
+      loadAllOrders();
+    });
+
+    function renderAdminOrders(orders) {
+      if (!adminOrdersTbody) return;
+      orderCountBadge.textContent = `${orders.length} orders`;
+
+      if (orders.length === 0) {
+        adminOrdersTbody.innerHTML = '';
+        noOrdersAlert.classList.remove('hidden');
+        return;
+      }
+
+      noOrdersAlert.classList.add('hidden');
+      adminOrdersTbody.innerHTML = orders.map(ord => {
+        const dateStr = ord.createdAt ? new Date(ord.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'Recent';
+
+        return `
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="py-4 px-6 font-bold text-slate-900">${escapeHtml(ord.name)}</td>
+            <td class="py-4 px-6">
+              <a href="tel:${escapeHtml(ord.phone)}" class="text-brandNavy hover:underline font-mono text-xs">${escapeHtml(ord.phone)}</a>
+            </td>
+            <td class="py-4 px-6">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-semibold">${escapeHtml(ord.service)}</span>
+            </td>
+            <td class="py-4 px-6">
+              <div class="text-xs font-bold text-slate-800">Qty: ${ord.quantity || 1}</div>
+              <div class="text-[11px] text-slate-500">${escapeHtml(ord.urgency || 'Normal')}</div>
+            </td>
+            <td class="py-4 px-6 text-xs text-slate-600 max-w-xs truncate" title="${escapeHtml(ord.details || 'None')}">
+              ${escapeHtml(ord.details || '—')}
+            </td>
+            <td class="py-4 px-6">
+              <select onchange="updateOrderStatus('${ord.id}', this.value)" 
+                      class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300 bg-white text-slate-800 focus:outline-none">
+                <option value="Pending" ${ord.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                <option value="Designing" ${ord.status === 'Designing' ? 'selected' : ''}>Designing</option>
+                <option value="Printing" ${ord.status === 'Printing' ? 'selected' : ''}>Printing</option>
+                <option value="Ready" ${ord.status === 'Ready' ? 'selected' : ''}>Ready</option>
+                <option value="Delivered" ${ord.status === 'Delivered' ? 'selected' : ''}>Delivered</option>
+              </select>
+            </td>
+            <td class="py-4 px-6 text-xs text-slate-500">${dateStr}</td>
+            <td class="py-4 px-6 text-right space-x-2">
+              <button onclick="sendCustomerWhatsApp('${escapeHtml(ord.phone)}', '${escapeHtml(ord.name)}', '${escapeHtml(ord.service)}', '${escapeHtml(ord.status)}')" 
+                      class="px-3 py-1 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold text-xs inline-flex items-center gap-1 transition-colors">
+                <span>WhatsApp</span>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Expose helpers globally for inline table event handlers
+    window.updateOrderStatus = async function(orderId, newStatus) {
+      // 1. Update in Firestore if available
+      if (isFirebaseReady && db) {
+        try {
+          const { doc, updateDoc } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js');
+          const orderRef = doc(db, "orders", orderId);
+          await updateDoc(orderRef, { status: newStatus });
+          console.log(`Firestore order ${orderId} updated to: ${newStatus}`);
+        } catch (e) {
+          console.warn("Firestore update error:", e);
+        }
+      }
+
+      // 2. Update local state
+      const orders = getLocalOrders();
+      const target = orders.find(o => o.id === orderId);
+      if (target) {
+        target.status = newStatus;
+        saveLocalOrders(orders);
+        renderRecentOrders(orders);
+      }
+    };
+
+    window.sendCustomerWhatsApp = function(phone, name, service, status) {
+      const cleanPhone = phone.replace(/[^0-9]/g, '');
+      const msg = `Hello ${name}, DEON ENTERPRISE order update: Your order for "${service}" is currently: *${status.toUpperCase()}*. Thank you for choosing Beyond Service!`;
+      const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    };
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', async () => {
+      await initFirebase();
+      const initialOrders = getLocalOrders();
+      renderRecentOrders(initialOrders);
+      calculatePrice();
+    });
+  </script>
+</body>
+</html>

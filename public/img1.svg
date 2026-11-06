@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg_img1.jpg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#ffc400" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg_img1.jpg)" />
+  <rect width="800" height="600" fill="url(#grid)" />
+  
+  <!-- Decorative badge -->
+  <rect x="40" y="40" width="200" height="36" rx="18" fill="rgba(0,0,0,0.4)" stroke="#ffc400" stroke-width="1.5" />
+  <text x="55" y="64" fill="#ffc400" font-family="sans-serif" font-weight="bold" font-size="14" letter-spacing="1">DEON PORTFOLIO</text>
+
+  <!-- Location badge -->
+  <rect x="560" y="40" width="200" height="36" rx="18" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+  <text x="580" y="64" fill="#ffffff" font-family="sans-serif" font-size="14">📍 Kampala</text>
+
+  <!-- Center Card Frame -->
+  <g transform="translate(80, 120)">
+    <rect width="640" height="380" rx="20" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+    
+    <!-- Icon circle -->
+    <circle cx="320" cy="90" r="50" fill="rgba(255,255,255,0.1)" stroke="#ffc400" stroke-width="3" />
+    <text x="320" y="108" text-anchor="middle" font-size="42">✂️</text>
+    
+    <!-- Title and details -->
+    <text x="320" y="190" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="30" font-weight="800">UMOJA Unisex Salon</text>
+    <text x="320" y="230" text-anchor="middle" fill="#ffc400" font-family="sans-serif" font-size="20" font-weight="700" letter-spacing="0.5">3D Lightbox Signage</text>
+    <text x="320" y="265" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="16" font-style="italic">Yellow & Black Illuminated Acrylic</text>
+
+    <!-- Bottom verification pill -->
+    <rect x="170" y="305" width="300" height="40" rx="20" fill="#0a1f6a" stroke="#ffc400" stroke-width="1.5" />
+    <text x="320" y="330" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold">⭐ Branded by DEON ENTERPRISE</text>
+  </g>
+
+  <!-- Footer Tagline -->
+  <text x="400" y="560" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="sans-serif" font-size="14" letter-spacing="2">BEYOND SERVICE • NASSER ROAD, KAMPALA</text>
+</svg>
