@@ -1,33 +1,60 @@
-# DEON ENTERPRISE — Website Image Assets & Replacement Guide
+# DEON ENTERPRISE — Website Image Assets & Done Work Guide
 
-All images on your website have been organized into the dedicated folder:
-📂 `/public/deon-assets/`
-
----
-
-## 📸 Image Directory & Placement Map
-
-| # | Filename in `public/deon-assets/` | Website Placement | Description & Dimensions |
-|---|-----------------------------------|-------------------|--------------------------|
-| **01** | `01_logo_deon.jpg` (or `logo.jpg`) | **Navbar, Mobile Menu, Admin, Footer, Favicon** | Circular DEON Logo with eagle emblem (1:1 Square, 500x500px). |
-| **02** | `02_hero_admission_flyer.jpg` (or `img2.jpg`) | **Hero Section Showcase & Portfolio** | Hands of Grace Nursery & Primary School Admission Flyer (4:3 or 4:5, 1200x900px). |
-| **03** | `03_service_large_format.jpg` | **Services: Large Format Printing Card** | Pull-up roll banners, teardrop flags, and backdrop banners (4:3, 1200x900px). |
-| **04** | `04_service_digital_printing.jpg` | **Services: Digital Printing Card** | Business cards, brochures, flyers, and gold-foiled certificates (4:3, 1200x900px). |
-| **05** | `05_service_material_branding.jpg` | **Services: Material Branding Card** | Branded cotton t-shirts, embroidered caps, ceramic mugs, and lanyards (4:3, 1200x900px). |
-| **06** | `06_about_printing_workshop.jpg` (or `img6.jpg`) | **About Us: Who We Are & Portfolio** | Industrial wide-format roll printer workshop at Zebra House, Nasser Road (16:9 or 4:3). |
-| **07** | `07_portfolio_umoja_salon_sign.jpg` (or `img1.jpg`) | **Portfolio: UMOJA Unisex Salon** | Yellow & black illuminated acrylic lightbox sign (4:3, 1200x900px). |
-| **08** | `08_portfolio_bishop_willigers_school.jpg` (or `img3.jpg`) | **Portfolio: School Signage** | Bishop Willigers Memorial School 3D illuminated letters on facade (4:3, 1200x900px). |
-| **09** | `09_portfolio_neiglow_skincare_glass.jpg` (or `img4.jpg`) | **Portfolio: NeiGlow Skin Care** | Double frosted glass entrance doors with gold lettering (4:3, 1200x900px). |
-| **10** | `10_portfolio_beauty_by_gisel_shop.jpg` (or `img5.jpg`) | **Portfolio: Beauty by Gisel** | 3D illuminated channel letters "Bags, Wigs, Shoes" at boutique arcade (4:3, 1200x900px). |
+All 25 of your real project photos and branding assets are organized in:
+- 📂 `/public/portfolio/` (named files for easy identification)
+- 📂 `/public/assets/aistudio/` (uploaded asset originals)
 
 ---
 
-## 🛠️ How to Replace Any Image with Your Own
+## 🎨 Done Works Portfolio Directory (25 Projects)
 
-### Method 1: Drop & Replace (Easiest)
-1. Rename your new photo to match the exact filename in the table above (e.g., `07_portfolio_umoja_salon_sign.jpg` or `img1.jpg`).
-2. Overwrite the file in `public/deon-assets/` or the root folder.
-3. Refresh your browser (Ctrl+Shift+R or Cmd+Shift+R) and your new photo will automatically appear!
-
-### Method 2: Update in `index.html`
-Open `index.html` and search for the image tag you want to change, then update the `src` attribute to your new image path.
+1. **Castro! Lounge Bar and Grill** — `/public/portfolio/castro_lounge_bar_grill_3d_sign.jpg`
+   - *Circular Mirror Gold & Black 3D Illuminated Sign* (Category: 3D Signage, Shop)
+2. **Bishop Willigers Memorial School (Night LED)** — `/public/portfolio/bishop_willigers_night_illuminated.jpg`
+   - *Night LED Backlit 3D Letters - "Wisdom is Divine" - Iganga* (Category: School, 3D Signage)
+3. **Bishop Willigers Memorial School (Day)** — `/public/portfolio/bishop_willigers_school_day.jpg`
+   - *Entrance Gate 3D Letters Daytime Installation* (Category: School, 3D Signage)
+4. **UMOJA Unisex Salon** — `/public/portfolio/umoja_salon_3d_sign.jpg`
+   - *3D Lightbox Signage - Yellow & Black* (Category: Shop, 3D Signage)
+5. **Beauty by Gisel** — `/public/portfolio/beauty_by_gisel_3d_sign.jpg`
+   - *3D Storefront Sign - Bags, Wigs, Shoes* (Category: Shop, 3D Signage)
+6. **NeiGlow Skin Care** — `/public/portfolio/neiglow_skin_care_glass_branding.jpg`
+   - *Glass Door Branding - "Where Beauty Meets Ambition"* (Category: Shop Branding)
+7. **Hands of Grace Nursery & Primary School** — `/public/portfolio/hands_of_grace_school_flyers_batch.jpg`
+   - *2026 Admission Recruitment Flyers Batch - Mukono* (Category: School, Flyers)
+8. **SMG Prime Supply (U) Ltd** — `/public/portfolio/smg_prime_supply_outdoor_banner.jpg`
+   - *Heavy-Duty Outdoor Vinyl Advertising Billboard Banner* (Category: Large Format)
+9. **SMG Prime Supply (U) Ltd - Facade** — `/public/portfolio/smg_prime_facade_signboard.jpg`
+   - *Building Exterior Signboard & Directional Branding* (Category: 3D Signage, Large Format)
+10. **"Exceptional Father" Biography** — `/public/portfolio/exceptional_father_book_front.jpg`
+    - *Front Cover Book Publishing & High-Gloss Finish* (Category: Books & Publishing)
+11. **"Exceptional Father" Back Cover** — `/public/portfolio/exceptional_father_book_back.jpg`
+    - *Pre-Press Typesetting, Binding & ISBN Barcode* (Category: Books & Publishing)
+12. **"Communion Songs" Hymn Book** — `/public/portfolio/communion_songs_book_printing.jpg`
+    - *Liturgical Songbook Printing & Saddle Stitch Binding* (Category: Books, School)
+13. **High Court & Registry Door Tags** — `/public/portfolio/high_court_acrylic_door_tags.jpg`
+    - *Laser-Cut Violet Acrylic Judicial Office Plaques* (Category: 3D Signage)
+14. **Steve & Ruth Wedding Pledge Cards** — `/public/portfolio/wedding_pledge_cards_steve_ruth.jpg`
+    - *Luxury Perforated Pledge & Invitation Cards with Gold Details* (Category: Flyers & Stationery)
+15. **Custom 3D Channel Letter "R"** — `/public/portfolio/3d_acrylic_led_letter_r.jpg`
+    - *Handcrafted 3D Acrylic Letter with Warm-Tone LED* (Category: 3D Signage)
+16. **"Divine" 3D Acrylic Lettering** — `/public/portfolio/divine_3d_acrylic_lettering.jpg`
+    - *Dimensional Cut Architectural Wall Letters* (Category: 3D Signage)
+17. **DEON Enterprise Official Flyer** — `/public/portfolio/deon_services_official_flyer.jpg`
+    - *Plot 27 Zebra House Level 1 Service Brochure* (Category: Flyers)
+18. **"Where Ideas Become Visual" Poster** — `/public/portfolio/deon_art_splash_poster.jpg`
+    - *Ultra-Vibrant CMYK Splash Artwork Print* (Category: Flyers, Large Format)
+19. **Uganda Passport Application Poster** — `/public/portfolio/uganda_passport_express_poster.jpg`
+    - *Retail Advisory Display Poster* (Category: Flyers)
+20. **FUNSUN Large-Format Plotter Banner** — `/public/portfolio/funsun_large_format_plotter.jpg`
+    - *High-Resolution Roll-to-Roll Banner Machine* (Category: Large Format, Workshop)
+21. **Roll-to-Roll Production in Action** — `/public/portfolio/roll_printing_production.jpg`
+    - *Continuous Bulk Media Printing* (Category: Large Format, Workshop)
+22. **Industrial Wide-Format Printing Press** — `/public/portfolio/funsun_eco_solvent_press.jpg`
+    - *FUNSUN Eco-Solvent Production Suite at Zebra House* (Category: Large Format, Workshop)
+23. **DEON Graphic Design & Pre-Press Lab** — `/public/portfolio/deon_design_computer_lab.jpg`
+    - *Creative Designers at Work on Brand Identities* (Category: Workshop)
+24. **DEON Digital Print Showroom** — `/public/portfolio/deon_production_showroom.jpg`
+    - *Display Gallery & Material Swatches Center* (Category: Workshop)
+25. **DEON Customer Reception Desk** — `/public/portfolio/deon_reception_desk_3d_logo.jpg`
+    - *Zebra House Level 1 Front Office with 3D Wall Logo* (Category: Workshop, 3D Signage)
