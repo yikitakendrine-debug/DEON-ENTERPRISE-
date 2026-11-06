@@ -104,20 +104,18 @@
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
           <a href="#home" class="text-white hover:text-brandYellow transition-colors">Home</a>
           <a href="#about" class="text-white/80 hover:text-brandYellow transition-colors">About Us</a>
           <a href="#services" class="text-white/80 hover:text-brandYellow transition-colors">Services</a>
           <a href="#portfolio" class="text-white/80 hover:text-brandYellow transition-colors">Our Work</a>
+          <a href="#video-advert" class="px-3 py-1 rounded-full bg-brandRed/90 hover:bg-brandRed text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5 animate-pulse">
+            <span class="w-2 h-2 rounded-full bg-brandYellow"></span>
+            <span>Video Advert</span>
+          </a>
           <a href="#system-flow" class="text-white/80 hover:text-brandYellow transition-colors">System Flow</a>
           <a href="#calculator" class="text-white/80 hover:text-brandYellow transition-colors">Calculator</a>
           <a href="#order" class="text-white/80 hover:text-brandYellow transition-colors">Order</a>
-          <a href="#admin" class="text-white/80 hover:text-brandYellow transition-colors flex items-center gap-1">
-            <svg class="w-4 h-4 text-brandYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-            </svg>
-            Admin
-          </a>
         </nav>
 
         <!-- CTA Button -->
@@ -158,15 +156,13 @@
       <a href="#about" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">About Us</a>
       <a href="#services" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Services</a>
       <a href="#portfolio" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Our Work</a>
+      <a href="#video-advert" class="mobile-link py-2 px-3 rounded-lg bg-brandRed text-white font-bold flex items-center justify-between">
+        <span>🎬 Video Advert Showcase</span>
+        <span class="text-[10px] bg-brandYellow text-brandDark px-2 py-0.5 rounded font-black">25 WORKS</span>
+      </a>
       <a href="#system-flow" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">System Flow</a>
       <a href="#calculator" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Price Calculator</a>
       <a href="#order" class="mobile-link block py-2 text-white/80 hover:text-brandYellow">Place Order</a>
-      <a href="#admin" class="mobile-link block py-2 text-white/80 hover:text-brandYellow flex items-center gap-2">
-        <svg class="w-4 h-4 text-brandYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-        </svg>
-        Admin Portal
-      </a>
       <div class="pt-2">
         <a href="https://wa.me/256701099816?text=Hello%20DEON%20ENTERPRISE,%20I%20would%20like%20to%20get%20a%20free%20quote" 
            target="_blank" 
@@ -1995,6 +1991,198 @@
     </div>
   </section>
 
+  <!-- ==================== VIDEO ADVERT SHOWCASE ==================== -->
+  <section id="video-advert" class="py-20 bg-slate-950 text-white relative overflow-hidden border-t-4 border-brandRed">
+    <!-- Background glow / cinema ambient lighting -->
+    <div class="absolute inset-0 pointer-events-none opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brandRed rounded-full filter blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brandNavy rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brandRed/20 text-brandRed font-display font-black text-xs tracking-widest uppercase mb-3 border border-brandRed/30">
+          <span class="w-2.5 h-2.5 rounded-full bg-brandRed animate-ping"></span>
+          <span>Official 4K Video Commercial • 25 Featured Works</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white">
+          DEON ENTERPRISE In Motion
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+          Sit back and watch our full cinematic video advert highlighting our 3D signs, school branding, book publishing, large-format billboard machines, and Nasser Road hub.
+        </p>
+      </div>
+
+      <!-- TV Cinema Monitor Frame -->
+      <div id="videoAdvertContainer" class="max-w-5xl mx-auto rounded-3xl bg-slate-900 border-2 border-slate-700/80 shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col relative transition-all">
+        
+        <!-- Cinema Screen Header Bar -->
+        <div class="px-4 py-2.5 bg-black/90 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400 select-none">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-red-600 inline-block animate-pulse"></span>
+            <span class="font-mono text-red-500 font-bold uppercase tracking-wider text-[11px]">REC • LIVE 4K UHD</span>
+            <span class="hidden sm:inline text-slate-600">|</span>
+            <span class="hidden sm:inline font-mono text-slate-400 text-[11px]" id="videoTimecode">00:00:01:14</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] bg-brandYellow text-brandDark font-display font-black px-2 py-0.5 rounded">DEON TV</span>
+            <span class="text-[11px] font-semibold text-slate-300">Plot 27 Zebra House Level 1</span>
+          </div>
+        </div>
+
+        <!-- Video Player Viewport (16:9 Aspect with cinematic framing) -->
+        <div class="relative w-full aspect-video bg-black overflow-hidden flex items-center justify-center group" id="videoScreen">
+          
+          <!-- Current Video Advert Slide Image with Ken Burns Zoom -->
+          <img id="videoAdvertImg" 
+               src="/assets/aistudio/IMG-20261102-WA0077_731c6af8.jpg" 
+               alt="DEON Enterprise Video Advert" 
+               class="w-full h-full object-contain sm:object-cover transition-all duration-700 scale-100 ease-out select-none"
+               referrerPolicy="no-referrer"
+               onerror="this.onerror=null; this.src='/portfolio/castro_lounge_bar_grill_3d_sign.jpg';" />
+
+          <!-- Cinematic Film Letterbox Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-black/60 pointer-events-none"></div>
+
+          <!-- Top-right DEON Watermark -->
+          <div class="absolute top-4 right-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 pointer-events-none">
+            <div class="w-5 h-5 rounded-full overflow-hidden bg-white p-0.5 shrink-0">
+              <img src="/assets/aistudio/IMG-20261102-WA0058_7d208db8.jpg" alt="Logo" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <span class="text-xs font-display font-black tracking-wider text-white">DEON ENTERPRISE</span>
+          </div>
+
+          <!-- Top-left Scene Counter Badge -->
+          <div class="absolute top-4 left-4 bg-brandRed text-white px-3 py-1 rounded-full text-xs font-black tracking-wider shadow-lg flex items-center gap-1.5 pointer-events-none">
+            <span>SCENE</span>
+            <span id="videoCurrentSceneBadge">01 / 25</span>
+          </div>
+
+          <!-- Center Big Play/Pause Overlay Button -->
+          <button id="videoCenterPlayBtn" 
+                  aria-label="Play or pause advert"
+                  class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-all cursor-pointer">
+            <div id="videoCenterPlayIcon" class="w-20 h-20 rounded-full bg-brandYellow/90 hover:bg-brandYellow text-brandDark flex items-center justify-center shadow-2xl transition-transform transform scale-90 group-hover:scale-100 hover:scale-110">
+              <svg class="w-9 h-9 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </button>
+
+          <!-- Lower-Third Broadcast TV Graphics Overlay -->
+          <div class="absolute bottom-4 left-4 right-4 pointer-events-none flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3">
+            <div class="bg-black/85 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-white/15 max-w-xl shadow-2xl pointer-events-auto">
+              <div class="flex items-center gap-2 mb-1">
+                <span id="videoCategoryTag" class="px-2 py-0.5 rounded bg-brandYellow text-brandDark font-black text-[10px] uppercase">
+                  3D Signage
+                </span>
+                <span class="text-[11px] text-brandYellow font-semibold" id="videoClientTag">
+                  Castro! Lounge Bar and Grill
+                </span>
+              </div>
+              <h3 id="videoProjectTitle" class="text-base sm:text-xl font-display font-bold text-white leading-tight">
+                Circular Mirror Gold & Black 3D Illuminated Sign
+              </h3>
+              <p id="videoProjectDesc" class="text-xs text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+                Custom laser-cut gold mirror acrylic on black gloss backplate with rear halo LED backlight for high nightlife visibility.
+              </p>
+            </div>
+
+            <div class="pointer-events-auto shrink-0 flex items-center gap-2">
+              <a id="videoOrderDirectBtn" 
+                 href="https://wa.me/256701099816?text=Hello%20DEON%20Enterprise,%20I%20am%20watching%20your%20video%20advert%20and%20want%20to%20order%20this%20exact%20item!" 
+                 target="_blank" 
+                 class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-xs shadow-xl flex items-center gap-2 transition hover:scale-105 active:scale-95">
+                <span>💬 Order This Item</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Progress Timeline Bar -->
+        <div class="w-full bg-slate-800 h-2 cursor-pointer relative group" id="videoProgressContainer">
+          <div id="videoProgressBar" class="bg-brandRed h-full transition-all duration-300 relative" style="width: 4%;">
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-brandYellow rounded-full shadow-md transform scale-0 group-hover:scale-100 transition-transform"></div>
+          </div>
+        </div>
+
+        <!-- Video Player Control Toolbar -->
+        <div class="p-3 sm:p-4 bg-slate-950 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-white">
+          
+          <!-- Left Controls: Play/Pause, Prev, Next, Time -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button id="videoPlayPauseBtn" class="p-2 rounded-xl bg-brandYellow hover:bg-yellow-400 text-brandDark font-bold transition cursor-pointer" title="Play / Pause">
+              <svg id="videoPlayIcon" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="videoPauseIcon" class="w-5 h-5 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <button id="videoPrevBtn" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition cursor-pointer" title="Previous Scene">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+            </button>
+
+            <button id="videoNextBtn" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition cursor-pointer" title="Next Scene">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+
+            <span id="videoTimeDisplay" class="font-mono text-xs text-slate-300 ml-1">00:04 / 01:40</span>
+          </div>
+
+          <!-- Center: Music Soundtrack Synthesizer -->
+          <div class="flex items-center gap-2">
+            <button id="videoSoundBtn" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-slate-200 flex items-center gap-1.5 transition cursor-pointer" title="Toggle background music">
+              <span id="videoSoundIcon">🔈</span>
+              <span id="videoSoundText">Sound: OFF</span>
+            </button>
+            <span class="text-[11px] text-slate-500 hidden md:inline">25 Commercial Scenes</span>
+          </div>
+
+          <!-- Right Controls: Speed, Auto-Loop, Fullscreen -->
+          <div class="flex items-center gap-2">
+            <button id="videoSpeedBtn" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-brandYellow transition cursor-pointer" title="Playback Speed">
+              1.0x
+            </button>
+
+            <button id="videoRestartBtn" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition cursor-pointer" title="Restart Advert">
+              <svg class="w-4 h-4 fill-none stroke-currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </button>
+
+            <button id="videoFullscreenBtn" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition cursor-pointer" title="Toggle Fullscreen">
+              <svg class="w-4 h-4 fill-none stroke-currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Interactive Scene Scrub Reel (All 25 Images Thumbnails) -->
+        <div class="p-3 bg-black/80 border-t border-slate-800/80 overflow-x-auto flex items-center gap-2 scrollbar-thin">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider shrink-0 px-1">
+            Scenes:
+          </span>
+          <div class="flex items-center gap-2" id="videoThumbnailsStrip">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Video Advert Callout Bar -->
+      <div class="max-w-5xl mx-auto mt-6 bg-slate-900/60 rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🎬</span>
+          <p class="text-xs sm:text-sm text-slate-300">
+            Want DEON Enterprise to design, print, or brand your company next? Contact our production line directly.
+          </p>
+        </div>
+        <a href="https://wa.me/256701099816?text=Hello%20DEON%20Enterprise,%20I%20watched%20your%20video%20advert%20and%20want%20to%20get%20a%20quote%20for%20my%20business!" 
+           target="_blank" 
+           class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-brandYellow hover:bg-yellow-400 text-brandDark font-display font-bold text-xs uppercase tracking-wider text-center shadow-lg transition">
+          Contact On WhatsApp Now
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== 6. MVO SYSTEM FLOW SECTION ==================== -->
   <section id="system-flow" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2101,31 +2289,20 @@
 
       </div>
 
-      <!-- Admin System Flow Box -->
-      <div class="mt-14 bg-gradient-to-r from-brandNavy to-[#08184d] rounded-3xl p-8 sm:p-10 text-white shadow-xl border border-white/10">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="px-3 py-1 rounded bg-brandYellow text-brandDark font-display font-black text-xs uppercase">
-            Admin Backend Architecture
-          </span>
-          <span class="text-xs text-slate-300">Firestore Powered Sync</span>
-        </div>
-        <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-4">
-          Real-time Order Lifecycle Pipeline
-        </h3>
-        
-        <div class="bg-black/40 rounded-2xl p-6 border border-white/10 font-mono text-xs sm:text-sm text-slate-200 leading-relaxed overflow-x-auto">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold">1. Customer Order</span>
-            <span>➔</span>
-            <span class="px-3 py-1.5 rounded-lg bg-purple-600 text-white font-bold">2. Saved in Firebase Firestore (collection: orders)</span>
-            <span>➔</span>
-            <span class="px-3 py-1.5 rounded-lg bg-slate-700 text-white font-bold">3. Admin sees in Dashboard</span>
-            <span>➔</span>
-            <span class="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-bold">4. Admin updates status: Pending ➔ Designing ➔ Printing ➔ Ready ➔ Delivered</span>
-            <span>➔</span>
-            <span class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold">5. Customer gets WhatsApp update</span>
+      <!-- Express Delivery & Service Assurance Banner -->
+      <div class="mt-12 bg-gradient-to-r from-brandNavy via-[#0f2878] to-brandNavy rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-brandYellow text-brandDark flex items-center justify-center font-display font-black text-2xl shadow-lg shrink-0">
+            ⚡
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-white">Uganda's Express 24h–72h Turnaround Guarantee</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">From initial digital proof approval to same-day dispatch across Kampala or express bus parcel upcountry.</p>
           </div>
         </div>
+        <a href="#order" class="px-6 py-3 rounded-xl bg-brandYellow hover:bg-yellow-400 text-brandDark font-display font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-lg shadow-yellow-500/20">
+          Start Your Order Now →
+        </a>
       </div>
 
     </div>
@@ -2147,10 +2324,10 @@
           Minimum Viable Product (MVP) Status
         </h3>
 
-        <!-- Simple Box explaining MVP -->
+        <!-- Customer Platform Status Box -->
         <div class="bg-blue-50 border-l-4 border-brandNavy p-5 rounded-r-xl mb-8">
           <p class="text-slate-800 font-medium text-base sm:text-lg">
-            “Our MVP is live now: 1) Website with portfolio, 2) Online order form connected to Firebase, 3) WhatsApp auto-order, 4) Admin can view orders. Next version will add: Online payment, Delivery tracking, Customer login.”
+            “DEON Enterprise Live Platform: 1) Full 25-project portfolio & 4K Video Advert showcase, 2) Fast online order form, 3) Instant WhatsApp auto-order dispatch, 4) Express 24h–72h turnaround. Next version will add: Direct online MoMo payments and live delivery parcel tracking.”
           </p>
         </div>
 
@@ -2160,23 +2337,23 @@
           <div class="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200">
             <h4 class="font-display font-bold text-emerald-900 mb-3 flex items-center gap-2">
               <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold">✓</span>
-              Live in MVP (Now Operational)
+              Live Features (Now Operational)
             </h4>
             <ul class="space-y-2.5 text-sm text-slate-700">
               <li class="flex items-center gap-2">
-                <span class="text-emerald-600 font-bold">✔</span> Full responsive showcase & interactive portfolio filtering
+                <span class="text-emerald-600 font-bold">✔</span> Full responsive showcase & 25-project interactive portfolio filtering
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-emerald-600 font-bold">✔</span> Online order form connected directly to Firebase Firestore
+                <span class="text-emerald-600 font-bold">✔</span> Official 4K Cinematic Video Advert player with scene scrubber & sound
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-emerald-600 font-bold">✔</span> Seamless WhatsApp auto-order generator with order details
+                <span class="text-emerald-600 font-bold">✔</span> Instant WhatsApp auto-order generator with customized quotation message
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-emerald-600 font-bold">✔</span> Password-protected Admin order management portal
+                <span class="text-emerald-600 font-bold">✔</span> Instant 24/7 online order form submission with order tracking ID
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-emerald-600 font-bold">✔</span> Instant UGX price estimator with urgency multipliers
+                <span class="text-emerald-600 font-bold">✔</span> Instant UGX price estimator with urgency multipliers (Standard / Express / Super Rush)
               </li>
             </ul>
           </div>
@@ -2869,6 +3046,458 @@
         window.closePortfolioLightbox();
       }
     });
+
+    // ==================== CINEMATIC VIDEO ADVERT ENGINE ====================
+    const videoScenes = [
+      {
+        title: "Castro! Lounge Bar and Grill",
+        subtitle: "Circular Mirror Gold & Black 3D Illuminated Sign",
+        category: "3D Signage",
+        client: "Castro! Lounge",
+        img: "/assets/aistudio/IMG-20261102-WA0077_731c6af8.jpg",
+        desc: "Custom laser-cut gold mirror acrylic on black gloss backplate with rear halo LED backlight for high nightlife visibility."
+      },
+      {
+        title: "Bishop Willigers Memorial School",
+        subtitle: "Night LED Backlit 3D Letters - 'Wisdom is Divine'",
+        category: "School Signage",
+        client: "Bishop Willigers",
+        img: "/assets/aistudio/IMG-20261102-WA0099_b9c254a5.jpg",
+        desc: "Fabricated architectural letters glowing at night with royal blue LED backlights at main campus gate in Iganga."
+      },
+      {
+        title: "Bishop Willigers Memorial School",
+        subtitle: "Campus Gate Entrance 3D Architectural Lettering (Day)",
+        category: "School Branding",
+        client: "Daytime Installation",
+        img: "/assets/aistudio/IMG-20261102-WA0102_5d25bdea.jpg",
+        desc: "High-visibility daytime structural branding fabricated to withstand Ugandan weather and sunlight."
+      },
+      {
+        title: "UMOJA Unisex Salon",
+        subtitle: "3D Lightbox Signage - Yellow & Black",
+        category: "Shop Signage",
+        client: "UMOJA Salon",
+        img: "/assets/aistudio/IMG-20261102-WA0144_a82eba27.jpg",
+        desc: "Custom-molded acrylic box with internal ultra-bright LED illumination engineered for 24/7 visibility on high-traffic streets."
+      },
+      {
+        title: "Beauty by Gisel",
+        subtitle: "3D Illuminated Storefront Sign - Bags, Wigs & Shoes",
+        category: "Shop Signage",
+        client: "Beauty by Gisel",
+        img: "/assets/aistudio/IMG-20261102-WA0095_d2c2e0c0.jpg",
+        desc: "Full boutique storefront facade branding including lighted dimensional canopy and display graphics."
+      },
+      {
+        title: "NeiGlow Skin Care",
+        subtitle: "Glass Door & Window Branding - 'Where Beauty Meets Ambition'",
+        category: "Shop Branding",
+        client: "NeiGlow Clinic",
+        img: "/assets/aistudio/IMG-20261102-WA0088_322e556f.jpg",
+        desc: "Precision cut frosted vinyl lettering with direct contact details and elegant typography ensuring privacy."
+      },
+      {
+        title: "Hands of Grace Nursery & Primary School",
+        subtitle: "2026 Admission Recruitment Flyers Batch - Mukono",
+        category: "Flyers & Printing",
+        client: "Hands of Grace",
+        img: "/assets/aistudio/IMG-20261102-WA0084_386ae6ad.jpg",
+        desc: "Mass print run on 150gsm gloss art paper featuring vivid recruitment photos and school curriculum straight off the press."
+      },
+      {
+        title: "SMG Prime Supply (U) Ltd",
+        subtitle: "Heavy-Duty Outdoor Vinyl Advertising Billboard Banner",
+        category: "Large Format",
+        client: "SMG Prime Supply",
+        img: "/assets/aistudio/IMG-20261102-WA0146_724390cc.jpg",
+        desc: "High-resolution eco-solvent flex print mounted on structural iron frame for prime industrial road advertising."
+      },
+      {
+        title: "SMG Prime Supply (U) Ltd (Facade)",
+        subtitle: "Building Exterior Signboard & Directional Brand Installation",
+        category: "Facade Signage",
+        client: "SMG Commercial Store",
+        img: "/assets/aistudio/IMG-20261102-WA0158_80129a53.jpg",
+        desc: "Full corporate premises branding showing product lines and contact numbers mounted above commercial stores."
+      },
+      {
+        title: "'Exceptional Father' Biography",
+        subtitle: "Front Cover Publishing & High-Gloss Lamination",
+        category: "Book Publishing",
+        client: "Biography Publishing",
+        img: "/assets/aistudio/IMG-20261102-WA0151_fe512ff1.jpg",
+        desc: "Full-color gloss laminated book cover publishing celebrating legacy, printed with flawless color separation."
+      },
+      {
+        title: "'Exceptional Father' Pre-Press & Spine",
+        subtitle: "Commercial Book Binding, ISBN Barcoding & Typesetting",
+        category: "Pre-Press & ISBN",
+        client: "MK Publishers Edition",
+        img: "/assets/aistudio/IMG-20261102-WA0143_99ce3d0d.jpg",
+        desc: "Comprehensive publishing service from editorial prepress to perfect binding, trim, and spine finishing."
+      },
+      {
+        title: "'Communion Songs' Hymn Book",
+        subtitle: "Liturgical Songbook Printing & Saddle Stitch Binding",
+        category: "Booklets & Hymnals",
+        client: "Parishes & Schools",
+        img: "/assets/aistudio/IMG-20261102-WA0123_03352f81.jpg",
+        desc: "Durable mass-production booklet printing for schools, parishes, and religious organisations across Uganda."
+      },
+      {
+        title: "High Court & Registry Door Tags",
+        subtitle: "Laser-Cut Violet Acrylic Office Plaques",
+        category: "Architectural Signs",
+        client: "Judicial Chambers",
+        img: "/assets/aistudio/IMG-20261102-WA0071_a0749bfc.jpg",
+        desc: "Precision-engraved institutional acrylic signs for Archives, Court Halls, Court Cells, and Magistrate chambers."
+      },
+      {
+        title: "Steve & Ruth Wedding Pledge Cards",
+        subtitle: "Luxury Perforated Cards with Gold Leaf Accents",
+        category: "Stationery & Cards",
+        client: "Wedding Committee",
+        img: "/assets/aistudio/IMG-20261102-WA0070_11b77744.jpg",
+        desc: "Fine textured cardstock with micro-perforations, numbered stubs, and gold foil motifs for ceremonies."
+      },
+      {
+        title: "Custom 3D Channel Letter 'R'",
+        subtitle: "Handcrafted 3D Acrylic & Warm-Tone LED Module",
+        category: "Channel Letters",
+        client: "Dimensional Letters",
+        img: "/assets/aistudio/IMG-20261102-WA0080_05ef66c4.jpg",
+        desc: "Individual dimensional letter manufacturing showing pristine edging, internal light diffusion, and clean wiring."
+      },
+      {
+        title: "'Divine' 3D Acrylic Lettering",
+        subtitle: "Precision-Cut Dimensional Wall Letters",
+        category: "3D Fabrication",
+        client: "School Mottos",
+        img: "/assets/aistudio/IMG-20261102-WA0120_1114a185.jpg",
+        desc: "Solid cast acrylic lettering polished to mirror perfection for high-end school mottoes and wall displays."
+      },
+      {
+        title: "DEON Enterprise Official Flyer",
+        subtitle: "Plot 27 Zebra House Level 1 Services Brochure",
+        category: "Corporate Flyer",
+        client: "Zebra House Hub",
+        img: "/assets/aistudio/IMG-20261102-WA0149_fc2154d1.jpg",
+        desc: "Showcasing full suite of services, brand identity, and direct phone/WhatsApp contact information."
+      },
+      {
+        title: "'Where Ideas Become Visual'",
+        subtitle: "Ultra-Vibrant CMYK Splash Artwork Print",
+        category: "Fine-Art Print",
+        client: "Creative Poster",
+        img: "/assets/aistudio/IMG-20261102-WA0059_9782bef7.jpg",
+        desc: "Exhibition quality color gamut showcase demonstrating DEON's high-definition digital pigment printing capability."
+      },
+      {
+        title: "Uganda Passport Application Guide Poster",
+        subtitle: "Retail Public Notice & Advisory Poster",
+        category: "Agency Poster",
+        client: "Consultancy Display",
+        img: "/assets/aistudio/IMG-20261102-WA0133_b1aba1b8.jpg",
+        desc: "Clean step-by-step public advisory graphic design and digital printing for travel consultancy agencies."
+      },
+      {
+        title: "FUNSUN Large-Format Plotter Banner",
+        subtitle: "High-Resolution Roll-to-Roll Banner Machine",
+        category: "Plotter Press",
+        client: "Industrial Banner",
+        img: "/assets/aistudio/IMG-20261102-WA0060_aaca27ee.jpg",
+        desc: "Wide-format eco-solvent banner demonstration on stickers, teardrops, pull-up banners, and billboards."
+      },
+      {
+        title: "Roll-to-Roll Production in Action",
+        subtitle: "Continuous Bulk Media Banner Printing",
+        category: "Media Production",
+        client: "Live Workshop",
+        img: "/assets/aistudio/IMG-20261102-WA0062_d6daa4ef.jpg",
+        desc: "Seamless printing of outdoor banners, vinyl stickers, and backdrop graphics on industrial machines."
+      },
+      {
+        title: "DEON Industrial Wide-Format Printing Press",
+        subtitle: "FUNSUN Eco-Solvent Suite with ONYX RIP",
+        category: "Heavy-Duty Press",
+        client: "Nasser Road Press",
+        img: "/assets/aistudio/IMG-20261102-WA0064_9ff5a84e.jpg",
+        desc: "Configured with calibrated ONYX RIP software for accurate color fidelity and sharp photographic output."
+      },
+      {
+        title: "DEON Graphic Design & Pre-Press Lab",
+        subtitle: "Creative Workstations at Zebra House Level 1",
+        category: "Design Lab",
+        client: "Brand Workstations",
+        img: "/assets/aistudio/IMG-20261102-WA0065_b619c643.jpg",
+        desc: "Dedicated workstations where our graphic designers prepare client vector files, 3D models, and proofings."
+      },
+      {
+        title: "DEON Digital Print Showroom",
+        subtitle: "Material Swatches & Finished Works Gallery",
+        category: "Showroom Gallery",
+        client: "Samples Center",
+        img: "/assets/aistudio/IMG-20261102-WA0085_6a1ff095.jpg",
+        desc: "Clients inspect material swatches, paper weights, acrylic samples, and lightboxes before bulk manufacturing."
+      },
+      {
+        title: "DEON Customer Reception Desk",
+        subtitle: "Corporate Front Office with 3D Wall Logo",
+        category: "Front Office",
+        client: "Zebra House Desk",
+        img: "/assets/aistudio/IMG-20261102-WA0134_be8d3a30.jpg",
+        desc: "Our welcome station at Zebra House Level 1, Nasser Road where orders are processed and proofs are approved."
+      }
+    ];
+
+    let currentSceneIdx = 0;
+    let isVideoPlaying = true;
+    let videoPlaybackSpeed = 1.0;
+    let sceneDurationMs = 4000;
+    let progressTimer = null;
+    let progressElapsed = 0;
+    let isSoundOn = false;
+    let audioCtx = null;
+
+    const videoAdvertImg = document.getElementById('videoAdvertImg');
+    const videoCurrentSceneBadge = document.getElementById('videoCurrentSceneBadge');
+    const videoCategoryTag = document.getElementById('videoCategoryTag');
+    const videoClientTag = document.getElementById('videoClientTag');
+    const videoProjectTitle = document.getElementById('videoProjectTitle');
+    const videoProjectDesc = document.getElementById('videoProjectDesc');
+    const videoOrderDirectBtn = document.getElementById('videoOrderDirectBtn');
+    const videoProgressBar = document.getElementById('videoProgressBar');
+    const videoTimeDisplay = document.getElementById('videoTimeDisplay');
+    const videoTimecode = document.getElementById('videoTimecode');
+    const videoPlayIcon = document.getElementById('videoPlayIcon');
+    const videoPauseIcon = document.getElementById('videoPauseIcon');
+    const videoCenterPlayIcon = document.getElementById('videoCenterPlayIcon');
+    const videoThumbnailsStrip = document.getElementById('videoThumbnailsStrip');
+    const videoSoundBtn = document.getElementById('videoSoundBtn');
+    const videoSoundIcon = document.getElementById('videoSoundIcon');
+    const videoSoundText = document.getElementById('videoSoundText');
+    const videoSpeedBtn = document.getElementById('videoSpeedBtn');
+    const videoAdvertContainer = document.getElementById('videoAdvertContainer');
+
+    // Populate thumbnails strip
+    if (videoThumbnailsStrip) {
+      videoThumbnailsStrip.innerHTML = videoScenes.map((sc, i) => `
+        <button class="video-thumb-btn w-12 h-9 rounded-lg overflow-hidden border ${i === 0 ? 'border-brandYellow ring-2 ring-brandYellow' : 'border-slate-700 opacity-60'} hover:opacity-100 transition shrink-0 cursor-pointer" data-idx="${i}" title="${sc.title}">
+          <img src="${sc.img}" alt="${sc.title}" class="w-full h-full object-cover" />
+        </button>
+      `).join('');
+
+      videoThumbnailsStrip.querySelectorAll('.video-thumb-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          showVideoScene(idx, true);
+        });
+      });
+    }
+
+    function showVideoScene(idx, resetProgress = true) {
+      currentSceneIdx = (idx + videoScenes.length) % videoScenes.length;
+      const sc = videoScenes[currentSceneIdx];
+      if (!sc) return;
+
+      if (videoAdvertImg) {
+        videoAdvertImg.style.opacity = '0.3';
+        videoAdvertImg.style.transform = 'scale(1.06)';
+
+        setTimeout(() => {
+          videoAdvertImg.src = sc.img;
+          videoAdvertImg.alt = sc.title;
+          videoAdvertImg.style.opacity = '1';
+          videoAdvertImg.style.transform = 'scale(1.0)';
+        }, 150);
+      }
+
+      if (videoCurrentSceneBadge) videoCurrentSceneBadge.textContent = `${String(currentSceneIdx + 1).padStart(2, '0')} / ${videoScenes.length}`;
+      if (videoCategoryTag) videoCategoryTag.textContent = sc.category;
+      if (videoClientTag) videoClientTag.textContent = sc.client;
+      if (videoProjectTitle) videoProjectTitle.textContent = sc.title;
+      if (videoProjectDesc) videoProjectDesc.textContent = sc.desc;
+
+      if (videoOrderDirectBtn) {
+        const waMsg = encodeURIComponent(`Hello DEON Enterprise, I am watching your Video Advert on your website and want to order "${sc.title}" (${sc.subtitle})!`);
+        videoOrderDirectBtn.href = `https://wa.me/256701099816?text=${waMsg}`;
+      }
+
+      // Update thumbnail active indicators
+      if (videoThumbnailsStrip) {
+        const thumbBtns = videoThumbnailsStrip.querySelectorAll('.video-thumb-btn');
+        thumbBtns.forEach((b, i) => {
+          if (i === currentSceneIdx) {
+            b.classList.remove('border-slate-700', 'opacity-60');
+            b.classList.add('border-brandYellow', 'ring-2', 'ring-brandYellow', 'opacity-100');
+            b.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          } else {
+            b.classList.add('border-slate-700', 'opacity-60');
+            b.classList.remove('border-brandYellow', 'ring-2', 'ring-brandYellow', 'opacity-100');
+          }
+        });
+      }
+
+      if (resetProgress) {
+        progressElapsed = 0;
+      }
+      updateVideoTimelineDisplay();
+
+      if (isSoundOn) {
+        playCommercialBeats();
+      }
+    }
+
+    function updateVideoTimelineDisplay() {
+      const effectiveDuration = sceneDurationMs / videoPlaybackSpeed;
+      const sceneFraction = Math.min(progressElapsed / effectiveDuration, 1);
+      const totalScenes = videoScenes.length;
+      const overallPercent = ((currentSceneIdx + sceneFraction) / totalScenes) * 100;
+      if (videoProgressBar) videoProgressBar.style.width = `${Math.min(overallPercent, 100)}%`;
+
+      const currentSecs = Math.floor((currentSceneIdx * (sceneDurationMs / 1000)) + (progressElapsed / 1000));
+      const totalSecs = Math.floor(totalScenes * (sceneDurationMs / 1000));
+      const curM = String(Math.floor(currentSecs / 60)).padStart(2, '0');
+      const curS = String(currentSecs % 60).padStart(2, '0');
+      const totM = String(Math.floor(totalSecs / 60)).padStart(2, '0');
+      const totS = String(totalSecs % 60).padStart(2, '0');
+      if (videoTimeDisplay) videoTimeDisplay.textContent = `${curM}:${curS} / ${totM}:${totS}`;
+
+      const frame = Math.floor((progressElapsed % 1000) / 40);
+      if (videoTimecode) videoTimecode.textContent = `00:0${Math.floor(currentSecs/60)}:${curS}:${String(frame).padStart(2, '0')}`;
+    }
+
+    function startVideoPlayback() {
+      isVideoPlaying = true;
+      videoPlayIcon?.classList.add('hidden');
+      videoPauseIcon?.classList.remove('hidden');
+      if (videoCenterPlayIcon) {
+        videoCenterPlayIcon.innerHTML = `<svg class="w-9 h-9 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+      }
+
+      clearInterval(progressTimer);
+      const tickMs = 100;
+      progressTimer = setInterval(() => {
+        if (!isVideoPlaying) return;
+        progressElapsed += tickMs;
+        const effectiveDuration = sceneDurationMs / videoPlaybackSpeed;
+        if (progressElapsed >= effectiveDuration) {
+          progressElapsed = 0;
+          showVideoScene(currentSceneIdx + 1, true);
+        } else {
+          updateVideoTimelineDisplay();
+        }
+      }, tickMs);
+    }
+
+    function pauseVideoPlayback() {
+      isVideoPlaying = false;
+      videoPlayIcon?.classList.remove('hidden');
+      videoPauseIcon?.classList.add('hidden');
+      if (videoCenterPlayIcon) {
+        videoCenterPlayIcon.innerHTML = `<svg class="w-9 h-9 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+      }
+      clearInterval(progressTimer);
+    }
+
+    function toggleVideoPlayback() {
+      if (isVideoPlaying) {
+        pauseVideoPlayback();
+      } else {
+        startVideoPlayback();
+      }
+    }
+
+    document.getElementById('videoPlayPauseBtn')?.addEventListener('click', toggleVideoPlayback);
+    document.getElementById('videoCenterPlayBtn')?.addEventListener('click', toggleVideoPlayback);
+    document.getElementById('videoNextBtn')?.addEventListener('click', () => {
+      showVideoScene(currentSceneIdx + 1, true);
+    });
+    document.getElementById('videoPrevBtn')?.addEventListener('click', () => {
+      showVideoScene(currentSceneIdx - 1, true);
+    });
+    document.getElementById('videoRestartBtn')?.addEventListener('click', () => {
+      showVideoScene(0, true);
+      startVideoPlayback();
+    });
+
+    const speeds = [1.0, 1.5, 2.0];
+    let speedIdx = 0;
+    videoSpeedBtn?.addEventListener('click', () => {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      videoPlaybackSpeed = speeds[speedIdx];
+      videoSpeedBtn.textContent = `${videoPlaybackSpeed.toFixed(1)}x`;
+    });
+
+    document.getElementById('videoFullscreenBtn')?.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        videoAdvertContainer?.requestFullscreen?.();
+      } else {
+        document.exitFullscreen?.();
+      }
+    });
+
+    document.getElementById('videoProgressContainer')?.addEventListener('click', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickRatio = (e.clientX - rect.left) / rect.width;
+      const targetScene = Math.floor(clickRatio * videoScenes.length);
+      showVideoScene(targetScene, true);
+    });
+
+    function playCommercialBeats() {
+      try {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const now = audioCtx.currentTime;
+        const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63];
+        const noteFreq = notes[currentSceneIdx % notes.length];
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(noteFreq, now);
+
+        gain.gain.setValueAtTime(0.06, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.35);
+      } catch (err) {
+        // Audio policy ignore
+      }
+    }
+
+    videoSoundBtn?.addEventListener('click', () => {
+      isSoundOn = !isSoundOn;
+      if (isSoundOn) {
+        videoSoundIcon.textContent = '🔊';
+        videoSoundText.textContent = 'Sound: ON';
+        videoSoundBtn.classList.add('bg-brandYellow', 'text-brandDark');
+        videoSoundBtn.classList.remove('bg-white/10', 'text-slate-200');
+        playCommercialBeats();
+      } else {
+        videoSoundIcon.textContent = '🔈';
+        videoSoundText.textContent = 'Sound: OFF';
+        videoSoundBtn.classList.remove('bg-brandYellow', 'text-brandDark');
+        videoSoundBtn.classList.add('bg-white/10', 'text-slate-200');
+      }
+    });
+
+    // Auto-start video advert
+    showVideoScene(0, true);
+    startVideoPlayback();
 
     // Price Calculator Logic
     const calcProduct = document.getElementById('calcProduct');
